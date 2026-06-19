@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hollow Assault "Beyblade" — Endgame 0.5 (แปลไทย)</title>
+<style>
+  :root{--bg:#0e0d0b;--panel:#17150f;--panel2:#1f1c14;--line:#3a3422;--gold:#c9a44a;--gold2:#e8c970;
+    --text:#e8e1cf;--muted:#a99f86;--blue:#7aa7d6;--green:#86c06a;--red:#d2695f}
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#0b0a08,#13110c);color:var(--text);
+    font-family:"Segoe UI",Tahoma,system-ui,sans-serif;line-height:1.75;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 20px 80px}
+  header.hero{text-align:center;padding:26px 18px;border:1px solid var(--line);border-radius:14px;
+    background:radial-gradient(120% 140% at 50% 0%,#241f14,#100e09);margin-bottom:26px}
+  header.hero h1{margin:0 0 6px;font-size:27px;color:var(--gold2)}
+  header.hero .sub{color:var(--muted);font-size:15px}
+  .tag{display:inline-block;margin:10px 6px 0;padding:4px 12px;border:1px solid var(--line);
+    border-radius:999px;font-size:13px;color:var(--gold);background:#1c1910}
+  h2.section{display:flex;align-items:center;gap:10px;margin:34px 0 14px;padding-bottom:8px;
+    border-bottom:2px solid var(--line);color:var(--gold2);font-size:21px}
+  p{margin:0 0 13px} .lead{color:var(--muted);font-style:italic;margin-bottom:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+  .card h3{margin:0 0 10px;color:var(--gold);font-size:17px}
+  strong.k{color:var(--gold2)} .en{color:var(--muted);font-size:13.5px}
+  ul{margin:6px 0;padding-left:22px} li{margin:5px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;margin:12px 0}
+  .skill{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;
+    background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 8px}
+  .skill img{width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
+  .skill .nth{font-weight:600;font-size:13.5px} .skill .nen{font-size:11.5px;color:var(--muted)}
+  .skill.spirit{border-color:#5e7e9e} .skill.support{border-color:#7a6a3a}
+  .skill.uniq{border-color:#8a5a2a;background:#22180f}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:#211d13;border:1px solid var(--line);
+    border-radius:8px;padding:2px 9px 2px 4px;margin:2px;vertical-align:middle;font-size:14px}
+  .chip img{width:24px;height:24px;object-fit:contain}
+  .note{font-size:13px;color:var(--muted);border-left:3px solid var(--gold);padding:6px 0 6px 12px;margin:10px 0;background:#15130d}
+  .imp{border-left:4px solid var(--gold2);background:linear-gradient(90deg,#2a2310,#17150f);
+    padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0}
+  .imp .lbl{display:inline-block;font-size:11.5px;letter-spacing:1px;text-transform:uppercase;
+    color:var(--gold2);font-weight:700;margin-bottom:4px}
+  mark{background:#4a3a12;color:var(--gold2);padding:0 4px;border-radius:3px;font-weight:600}
+  .dmg{color:var(--gold2);font-weight:700}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:middle}
+  th{background:#221d12;color:var(--gold);font-size:13px} tr:nth-child(even) td{background:#15130d}
+  td .gi{display:flex;align-items:center;gap:8px} td .gi img{width:30px;height:30px;object-fit:contain}
+  a{color:var(--blue)}
+  nav.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+  nav.tabs button{flex:1 1 200px;cursor:pointer;font:inherit;font-size:15px;font-weight:600;color:var(--muted);
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;transition:.15s}
+  nav.tabs button:hover{color:var(--text);border-color:var(--gold)}
+  nav.tabs button.active{color:#161208;background:linear-gradient(180deg,var(--gold2),var(--gold));border-color:var(--gold2)}
+  .tab-panel{display:none} .tab-panel.active{display:block}
+  .meta-links a{margin-right:12px;font-size:13px}
+  footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>🌀 Hollow Assault "Beyblade" — Endgame 0.5</h1>
+  <div class="sub">บิลด์ Monk สาย Hollow Form + Whirling Assault · ถอด+แปลไทยจากคลิปไกด์</div>
+  <div>
+    <span class="tag">~5M DPS</span>
+    <span class="tag">10k Energy Shield</span>
+    <span class="tag">23,000 Evasion</span>
+    <span class="tag">Move Speed +100%+</span>
+    <span class="tag">เคลียร์ทั้งจอปุ่มเดียว</span>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="active" data-tab="video">📺 แปลจากคลิป (Endgame Update)</button>
+  <button data-tab="moba">📋 ไกด์ Mobalytics (Jungroan)</button>
+</nav>
+
+<div class="tab-panel active" id="tab-video">
+<p class="lead">หมายเหตุ: คำแปลแบบเรียบเรียงให้อ่านง่าย (ไม่ใช่คำต่อคำ) · ชื่อสกิล/ไอเทมคงอังกฤษ + ชื่อไทยจากเกม + ไอคอนจากฐานข้อมูล poe2db · บิลด์นี้ผู้ทำบอกว่าเป็น league starter ที่แข็งที่สุดที่เคยเล่น</p>
+
+<h2 class="section">🗂️ ไอคอนสกิล/ไอเทมหลัก</h2>
+<p class="en">ขอบสี: ฟ้า = Spirit · ส้ม = Unique · ทอง = Support · เทา = Skill</p>
+<div class="grid">
+  <div class="skill"><img src="images/Art/2DItems/Gems/New/WhirlingAssaultSkillGem.webp"><span class="nth">หมุนตัวจู่โจม</span><span class="nen">Whirling Assault</span></div>
+  <div class="skill"><img src="images/Art/2DItems/Gems/New/WolfLeapAttackSkillGem.webp"><span class="nth">ตะครุบ</span><span class="nen">Pounce</span></div>
+  <div class="skill"><img src="images/Art/2DItems/Gems/New/DruidDevourShockSkillGem.webp"><span class="nth">เขมือบ</span><span class="nen">Devour</span></div>
+  <div class="skill"><img src="images/Art/2DItems/Gems/New/KillingPalmSkillGem.webp"><span class="nth">ฝ่ามือมรณะ</span><span class="nen">Killing Palm</span></div>
+  <div class="skill spirit"><img src="images/Art/2DItems/Gems/New/GhostDanceSkillGem.webp"><span class="nth">ระบำวิญญาณ</span><span class="nen">Ghost Dance</span></div>
+  <div class="skill spirit"><img src="images/Art/2DItems/Gems/New/WitchBlasphemySkillGem.webp"><span class="nth">เผยแผ่คำสาป</span><span class="nen">Blasphemy</span></div>
+  <div class="skill spirit"><img src="images/Art/2DItems/Gems/New/WindDancerSkillGem.webp"><span class="nth">ลมร่ายรำ</span><span class="nen">Wind Dancer</span></div>
+  <div class="skill support"><img src="images/Art/2DItems/Gems/New/NewSupport/Lineage/Rakiata.webp"><span class="nth">Rakiata's Flow</span><span class="nen">Support</span></div>
+  <div class="skill support"><img src="images/Art/2DItems/Gems/New/NewSupport/Lineage/Garukhan.webp"><span class="nth">Garukhan's Resolve</span><span class="nen">Support</span></div>
+  <div class="skill uniq"><img src="images/Art/2DItems/Armours/Gloves/Uniques/LochtonialCaress.webp"><span class="nth">Lochtonial Caress</span><span class="nen">Gloves — แกนบิลด์</span></div>
+  <div class="skill uniq"><img src="images/Art/2DItems/Belts/Uniques/Mageblood.webp"><span class="nth">Mageblood</span><span class="nen">Belt (chase)</span></div>
+  <div class="skill uniq"><img src="images/Art/2DItems/Belts/Uniques/Headhunter.webp"><span class="nth">Headhunter</span><span class="nen">Belt</span></div>
+  <div class="skill uniq"><img src="images/Art/2DItems/Belts/Uniques/Widowmaker.webp"><span class="nth">Ingenuity</span><span class="nen">Belt</span></div>
+  <div class="skill uniq"><img src="images/Art/2DItems/Jewels/Uniques/ApostatesHeart.webp"><span class="nth">Heart of the Well</span><span class="nen">Jewel</span></div>
+  <div class="skill uniq"><img src="images/Art/2DItems/Jewels/DeliriumJewel.webp"><span class="nth">Megalomaniac</span><span class="nen">Jewel</span></div>
+</div>
+
+<h2 class="section">⚙️ กลไกหลัก (Core Mechanics)</h2>
+<div class="imp">
+  <span class="lbl">⭐ หัวใจของบิลด์</span>
+  <p style="margin:0"><span class="chip"><img src="images/Art/2DItems/Armours/Gloves/Uniques/LochtonialCaress.webp">Lochtonial Caress</span>
+  + keystone <strong class="k">Way of the Stonefist</strong> → ถุงมือ<strong class="k">สร้าง charge ให้พวกพ้องเมื่อโจมตีโดน</strong> ·
+  clone (ร่างแยก) สืบทอดค่าสเตตัสของเรา จึงสร้าง charge ให้เราในฐานะ "พวกพ้อง" ได้ ·
+  charge เหล่านี้ถูกใช้ตอน channel <span class="chip"><img src="images/Art/2DItems/Gems/New/WhirlingAssaultSkillGem.webp">Hollow Form</span>
+  → <mark>เพิ่มดาเมจ Whirling Assault เป็น 3 เท่า</mark>ภายในสกิลนั้น</p>
+</div>
+<p>clone จะตี Whirling/Rolling Assault จนจบชุดเสมอ · <strong class="k">attack speed ไม่มีผลกับ clone</strong> แต่ไปเพิ่ม
+<strong class="k">ความเร็วในการ channel Hollow Form</strong> ของเรา → ดาเมจรวมยังเพิ่มขึ้นอยู่ดี</p>
+
+<h2 class="section">🛡️ การป้องกัน (Defensive)</h2>
+<div class="card">
+  <p>จุดเปลี่ยนใหญ่จากเวอร์ชันก่อน คือ <strong class="k">เพิ่ม Energy Shield เป็น 2 เท่า</strong> โดยใช้ <strong class="k">body + helmet เป็น ES ล้วน</strong></p>
+  <p>เพื่อคง Evasion สูง ๆ ไว้: roll modifier <strong class="k">Legacy of Jade</strong> บน
+  <span class="chip"><img src="images/Art/2DItems/Belts/Uniques/Mageblood.webp">Mageblood</span> · ถ้าราคาแพงไป ให้หา Evasion จากแหวน/รองเท้าแทน
+  (flat evasion สเกลดีมากกับ node hybrid defense บนผัง) · หรือเล่น gear แบบ hybrid Evasion/ES ก็ยังดี</p>
+</div>
+
+<h2 class="section">📈 เลเวลลิ่ง (Leveling)</h2>
+<p>ผู้ทำบอกว่านี่คือ <strong class="k">league starter ที่แข็งที่สุดเท่าที่เคยเล่น</strong> — ตั้งแต่ ~เลเวล 60 ที่มี Hollow Palm ก็ดัน T15 ได้แทบจะทันที พอได้
+<span class="chip"><img src="images/Art/2DItems/Armours/Gloves/Uniques/LochtonialCaress.webp">Lochtonial Caress</span> + Rolling Assault มันแรงกว่าบิลด์ทั่วไปแทบทุกตัว</p>
+<p class="note">ช่วงก่อนหน้านั้น: เลือกสาย leveling ของ Monk ตามถนัด (บางคนใช้ Twister/Bow leveling) ผู้ทำแนะนำตามไกด์ของ <strong>FG Corbin</strong> ดีมากสำหรับพื้นฐาน quarterstaff ช่วงต้นเกม</p>
+
+<h2 class="section">🔨 Crafting / Gear</h2>
+<div class="card">
+  <h3>Staff <span class="en">— สำคัญสุด (เป็นฐานดาเมจ)</span></h3>
+  <ul>
+    <li>ฐาน: ซื้อ/เก็บ base ที่มี <strong class="k">IPD + attack speed</strong> (เก็บจากพื้นมา transmute ก็ได้)</li>
+    <li>ใช้ <strong>Essence of Abrasion</strong> → flat physical damage</li>
+    <li>Desecrate ด้วย <strong>Ancient Jawbone</strong> → แล้วหา hybrid physical + accuracy</li>
+    <li>ที่เหลือคือ "อธิษฐาน" — ใช้ Exalt เติม suffix ช่วง mid แล้วลุ้นเอา</li>
+  </ul>
+</div>
+<div class="card">
+  <h3>Body / Helmet / Boots</h3>
+  <ul>
+    <li>เก็บ white base ที่ดีที่สุดสำหรับบิลด์จากพื้นมาเยอะ ๆ → Greater Chance Orb ในแมพ → Greater Augment หา prefix ดี ๆ</li>
+    <li>ข้อดีของ base ป้องกัน: prefix พวก ES/defense มี weight สูง (ต่างจาก weapon) คราฟต์ง่ายกว่า · garantee rarity ได้</li>
+    <li>ตัวอย่าง helmet: เริ่ม increased ES + lightning res → Essence of Opulence (garantee rarity suffix) → desecrate garantee prefix (Preserved Rib) → slam ปิด</li>
+    <li><strong class="k">Boots เลือก Evasion / Evasion-ES hybrid</strong> เพราะ line "<strong>Deflection rating = Evasion rating</strong>" แรงมากบน gear (บนผังกลับห่วย) · boots prefix แย่กว่าชิ้นอื่นเพราะเสียช่องให้ movement speed</li>
+  </ul>
+</div>
+<div class="card">
+  <h3>Rings / Amulet</h3>
+  <ul>
+    <li><strong>Rings:</strong> เก็บ tier 4–5 จากพื้น (mod กวนน้อยกว่า) · prefix เอา flat physical/cold/lightning/fire อันไหนก็ได้ · เน้น <strong class="k">double rarity</strong> + เติม res/attribute</li>
+    <li><strong>Amulet:</strong> +3 ไม่สำคัญมาก (แต่เพิ่มดาเมจพอควร) · ที่สำคัญสุดคือ <strong class="k">spirit implicit ≥10</strong> (gem quality ช่วยลด reservation ของ Blasphemy + Ghost Dance) · ถ้าได้ spirit เยอะอาจใส่ banner/Wind Dancer เพิ่มได้</li>
+  </ul>
+</div>
+<div class="card">
+  <h3>Uniques</h3>
+  <ul>
+    <li><span class="chip"><img src="images/Art/2DItems/Armours/Gloves/Uniques/LochtonialCaress.webp">Lochtonial Caress</span>
+    <strong class="k">บังคับ</strong> (base = Tempered Mitts) · หา line <mark>"10% power charge granting"</mark> · ดู roll ไม่ได้ก่อนสวม ถ้า roll ห่วยเอาไป <strong>reforge ที่ Verisium Anvil</strong> ได้ 1 ครั้ง</li>
+    <li><span class="chip"><img src="images/Art/2DItems/Belts/Uniques/Mageblood.webp">Mageblood</span> เป็น chase ·
+    <span class="chip"><img src="images/Art/2DItems/Belts/Uniques/Headhunter.webp">Headhunter</span> ก็ดี · ก่อนได้ให้ใช้
+    <span class="chip"><img src="images/Art/2DItems/Belts/Uniques/Widowmaker.webp">Ingenuity</span> หรือ rare belt ไปก่อน</li>
+    <li class="note">เกร็ด Mageblood: ถ้า modifier (Legacy) ซ้ำกัน จะได้ผลเพิ่มกับ "ทุก Legacy" ที่ใช้งาน เช่น Legacy of Quicksilver ซ้ำ → ได้ทั้ง move speed (รวม ~42%) ไม่ใช่แค่ตัวเดียว</li>
+  </ul>
+</div>
+
+<h2 class="section">🔰 Runes</h2>
+<ul>
+  <li><strong class="k">Legacy of Fox Trade</strong> (~30 div) — 10% move speed ติดตลอด (เพราะเป็น Chaos) + <strong>100% evasion rating แบบ global</strong> ดีมาก</li>
+  <li><strong class="k">Boarding</strong> + keystone <strong>Hollow Keeper</strong> (ปลด 2 node) → <mark>curse immunity ตลอดเวลา</mark> ใส่บน boots</li>
+  <li>Resistance runes ตามที่ขาด</li>
+  <li><strong class="k">Katigan's Epiphany</strong> → +1 jewel socket (jewel โดยเฉลี่ยแรงกว่า rune)</li>
+</ul>
+
+<h2 class="section">💢 Rage Generation</h2>
+<div class="card">
+  <p>⚠️ Rage generation <strong class="k">ไม่ proc จาก Hollow Form</strong> (เพราะนั่นคือ clone ตี ไม่ใช่เรา) — แต่
+  <strong class="k">proc จาก <span class="chip"><img src="images/Art/2DItems/Gems/New/KillingPalmSkillGem.webp">Hollow Focus</span></strong>
+  (ระเบิดกระดิ่ง = ดาเมจของเราเอง) → ได้ rage uptime ต่อเนื่อง</p>
+  <p>มี rage generation จาก <span class="chip"><img src="images/Art/2DItems/Gems/New/DruidDevourShockSkillGem.webp">Devour</span> ด้วย ·
+  ใส่บน <span class="chip"><img src="images/Art/2DItems/Gems/New/WolfLeapAttackSkillGem.webp">Pounce</span> ก็ได้ (เริ่มบอสมี ~10 rage)</p>
+</div>
+
+<h2 class="section">🔷 Jewels</h2>
+<ul>
+  <li><span class="chip"><img src="images/Art/2DItems/Jewels/Uniques/ApostatesHeart.webp">Heart of the Well</span>
+  (~5 div) — gain ES เป็น extra lightning จาก body armor (<span class="dmg">52%</span>!) + ailment/stun threshold = ES (ไม่ต้องเก็บ node) hyper efficient (ไม่สเกลจากผังแต่แรงมาก)</li>
+  <li><span class="chip"><img src="images/Art/2DItems/Jewels/DeliriumJewel.webp">Megalomaniac</span> — ให้ <strong>Reaching Strike</strong> (weapon range สเกลแบบ additive→more กับ staff + AoE) เพิ่ม AoE เยอะ · optional/ข้ามได้</li>
+  <li><strong class="k">Time-Lost jewel</strong> — ตำแหน่งดีมาก ครอบ 6 notable → notable passive scaling แรง (คราฟต์ด้วย distilled emotion: Liquid Suffering garantee 1% move speed แบบไม่มี roll range)</li>
+</ul>
+
+<h2 class="section">💧 Mana Sustain</h2>
+<div class="imp">
+  <span class="lbl">⭐ ตอบคำถามที่ถามบ่อย (mana)</span>
+  <p style="margin:0"><strong class="k">Well of Power</strong> แก้ปัญหา mana เกือบทั้งหมด (ใช้ power charge เยอะ) · ไม่พอกดขวด mana · ยังไม่พออีกเอา node
+  <mark>Conservative Casting</mark> (efficient มาก หาง่าย)</p>
+</div>
+
+<h2 class="section">💎 Gem Setup</h2>
+<div class="card">
+  <h3>Whirling Assault <span class="en">(สกิลหลัก)</span></h3>
+  <p>ดันถึง 21 ง่าย — gem ระดับไหน socket ไหนก็ได้ corrupt จนได้ <strong class="k">+1 (corruption)</strong> แล้วใช้ level 20 uncut ตามทีหลัง · ถูกมาก</p>
+  <p class="note">ครึ่งหนึ่งของงบบิลด์อยู่ใน setup ของ Hollow Form (support แพงมาก)</p>
+</div>
+<div class="card">
+  <h3>Support หลักใน Hollow Form / Whirling Assault</h3>
+  <ul>
+    <li><span class="chip"><img src="images/Art/2DItems/Gems/New/NewSupport/Lineage/Rakiata.webp">Rakiata's Flow</span>
+    — แม้ดูเป็นบิลด์ physical แต่ครึ่งหนึ่งของดาเมจกลายเป็น elemental (gain-as จาก diamond + Devour buff + Rend อีก 50%) → Rakiata OP</li>
+    <li><span class="chip"><img src="images/Art/2DItems/Gems/New/NewSupport/Lineage/Garukhan.webp">Garukhan's Resolve</span>
+    — bifurcation OP สำหรับบิลด์ crit attack (ผู้ทำเรียกผิดเป็น "Garacon's")</li>
+    <li><strong class="k">Verana's Siege</strong> — AoE ตอนเคลียร์ + more damage ตอน single target (ไม่มีไอคอนใน DB)</li>
+    <li><span class="chip"><img src="images/Art/2DItems/Gems/New/NewSupport/MobilitySupportGem.webp">Mobility</span> — เล่นลื่นขึ้น</li>
+  </ul>
+  <p class="en">ทางเลือกอื่น: <span class="chip"><img src="images/Art/2DItems/Gems/New/NewSupport/IncreasedAreaOfEffectSupportGem.webp">Magnified Area II</span> (ดีกับ Verana's Siege) ·
+  <span class="chip"><img src="images/Art/2DItems/Gems/New/NewSupport/BlindsideSupportGem.webp">Blindside</span> (คู่กับ Blind) ·
+  <span class="chip"><img src="images/Art/2DItems/Gems/New/NewSupport/AddedHeftSupportGem.webp">Heft</span> ·
+  <span class="chip"><img src="images/Art/2DItems/Gems/New/NewSupport/AddedLightningDamageSupportGem.webp">Lightning Attunement/Infusion</span> ·
+  Armour Breaker III (เคลียร์แมพดี) · Heavy Swing (ดาเมจมากแต่กระทบ AoE)</p>
+</div>
+<div class="card">
+  <h3>Pounce + Devour (companion / utility)</h3>
+  <ul>
+    <li><span class="chip"><img src="images/Art/2DItems/Gems/New/WolfLeapAttackSkillGem.webp">Pounce</span>
+    + Brutus' Brain → <mark>~45–60% more damage</mark> + armor break จาก <span class="chip"><img src="images/Art/2DItems/Gems/New/NewSupport/SingleOutSupportGem.webp">Mark for Death</span> (Predator's Mark) · ใส่ตัวเพิ่ม minion count ให้ครบเพื่อรับ more damage เต็ม</li>
+    <li><span class="chip"><img src="images/Art/2DItems/Gems/New/DruidDevourShockSkillGem.webp">Devour</span>
+    ~เหมือน Killing Palm แต่เลือก Devour เพราะอยู่ weapon set 2 ที่มี skill effect duration เยอะ → <strong class="k">ยืดเวลา Blazing Critical / Thrill of the Kill</strong> (จาก ~5 วิ เป็น ~14 วิ)</li>
+    <li><span class="chip"><img src="images/Art/2DItems/Gems/New/GhostDanceSkillGem.webp">Ghost Dance</span> +
+    <span class="chip"><img src="images/Art/2DItems/Gems/New/WitchBlasphemySkillGem.webp">Blasphemy</span> ยังใช้อยู่</li>
+  </ul>
+</div>
+<div class="imp">
+  <span class="lbl">⭐ เกร็ดสำคัญ — Pounce กับ Weapon Set</span>
+  <p style="margin:0">ถ้า Pounce ตั้งไว้แค่ weapon set 2 พอสลับกลับ set 1 <strong class="k">หมาป่า (wolves) จะหายไป</strong> ·
+  วิธีแก้: <mark>ถอด staff ออก → allocate Pounce ใน weapon set ทั้งสอง → ใส่ staff กลับ</mark> หมาป่าจะอยู่ทั้งสอง set</p>
+</div>
+
+<h2 class="section">📜 Quest Rewards (รางวัลถาวร)</h2>
+<table>
+  <thead><tr><th>Act / โซน</th><th>รางวัลที่เลือก</th></tr></thead>
+  <tbody>
+    <tr><td>Act 3 — Venom</td><td><mark>Mana Regeneration</mark></td></tr>
+    <tr><td>Act 4 — Shark Fin</td><td><mark>Increased Evasion + Energy Shield</mark></td></tr>
+    <tr><td>KMA</td><td>Movement Speed</td></tr>
+  </tbody>
+</table>
+<p class="note">ผู้ทำบอกว่ารายละเอียดรางวัลเต็มอยู่ในไกด์ Mobalytics (MOA) ของเขา และผังสกิลจะปรับอีกหลายรอบเพื่อทดลอง</p>
+
+</div><!-- /tab-video -->
+
+<div class="tab-panel" id="tab-moba">
+<div class="card">
+  <h3>📋 Hollow Assault Beyblade — ไกด์ทางการ (Mobalytics)</h3>
+  <p>คลาส <strong class="k">Monk → Martial Artist</strong> · เวอร์ชัน <strong class="k">0.5 RotA</strong> · โดย <strong class="k">Jungroan</strong> (Verified) · 2.2K favorites · อัปเดต 8 มิ.ย. 2026</p>
+  <p class="en">นี่คือไกด์ต้นฉบับบนเว็บ Mobalytics — คลิปในแท็บแรกอ้างอิง/ต่อยอดจากบิลด์นี้</p>
+  <p class="meta-links"><a href="https://mobalytics.gg/poe-2/builds/hollow-assault-beyblade" target="_blank">หน้าบิลด์ต้นฉบับ</a></p>
+</div>
+
+<div class="imp"><span class="lbl">⚠️ คำเตือนสำคัญ (PSA)</span>
+<p style="margin:0"><strong class="k">ห้ามใช้ Verisium Anvil</strong> กับช่อง Runic Forge ที่ให้ค่าป้องกันสำคัญ (Evasion / Energy Shield) — <mark>มันจะกินค่านั้นทิ้ง</mark></p></div>
+
+<div class="imp"><span class="lbl">⭐ กลไกแกน + ค่าสเตตัสขั้นต่ำ</span>
+<p style="margin:0 0 6px">Hollow Form + Whirling Assault → <mark>ดาเมจ ×3 เมื่อใช้ power charge</mark> · charge ถูก oversustain ผ่าน Lochtonial Caress + Way of the Stonefist (clone สร้าง charge ให้) · charge ส่วนเกินป้อนเข้า <span class="chip"><img src="images/Art/2DItems/Gems/New/ChargeMasterySkillGem.webp">Charge Regulation</span></p>
+<p style="margin:0">Support gem ต้องการ: <mark>Str 40 · Dex 60 · Int 35</mark></p></div>
+
+<h2 class="section">🎯 เวอร์ชัน (Variants)</h2>
+<p>Early Endgame · Midgame · Map Start · 41 (Minimum Viable)</p>
+
+<h2 class="section">💎 Skill Gems</h2>
+<table>
+  <thead><tr><th>#</th><th>Gem</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><div class="gi">Quarterstaff Strike <span class="en">ฟาดด้วยไม้พลองวรยุทธ์</span></div></td></tr>
+    <tr><td>2</td><td><div class="gi"><img src="images/Art/2DItems/Gems/New/DruidWyvernSwipeSkillGem.webp">Rend <span class="en">ปาดเนื้อ</span></div></td></tr>
+    <tr><td>3</td><td><div class="gi">Hollow Form <span class="en">ร่างทรงขลัง</span></div></td></tr>
+    <tr><td>4</td><td><div class="gi">Hollow Focus <span class="en">สมาธิขลัง</span></div></td></tr>
+    <tr><td>5</td><td><div class="gi"><img src="images/Art/2DItems/Gems/New/WolfLeapAttackSkillGem.webp">Pounce <span class="en">ตะครุบ</span></div></td></tr>
+    <tr><td>6</td><td><div class="gi"><img src="images/Art/2DItems/Gems/New/WitchBlasphemySkillGem.webp">Blasphemy <span class="en">เผยแผ่คำสาป</span></div></td></tr>
+    <tr><td>7</td><td><div class="gi"><img src="images/Art/2DItems/Gems/New/GhostDanceSkillGem.webp">Ghost Dance <span class="en">ระบำวิญญาณ</span></div></td></tr>
+    <tr><td>8</td><td><div class="gi"><img src="images/Art/2DItems/Gems/New/ChargeMasterySkillGem.webp">Charge Regulation <span class="en">ควบคุมชาร์จ</span></div></td></tr>
+    <tr><td>9</td><td><div class="gi"><img src="images/Art/2DItems/Gems/New/DruidDevourShockSkillGem.webp">Devour <span class="en">เขมือบ</span></div></td></tr>
+  </tbody>
+</table>
+<p class="note">สกิลบางตัว (Hollow Form lv40 / Hollow Focus / Charge Regulation) ระบบจะเพิ่มให้อัตโนมัติเมื่อเลเวลถึง (40, 65, 90)</p>
+
+<div class="imp"><span class="lbl">⭐ ลำดับกดสกิล (How it Plays)</span>
+<p style="margin:0 0 6px"><strong class="k">เคลียร์แมพ:</strong> <mark>ปุ่มเดียว</mark> — แตะ Hollow Form เพื่อเรียก clone Whirling Assault</p>
+<p style="margin:0"><strong class="k">Single target:</strong> 1) ทลายเกราะด้วย <span class="chip"><img src="images/Art/2DItems/Gems/New/NewSupport/SingleOutSupportGem.webp">Mark for Death II</span> → 2) เปิด Predator's Mark = ศัตรูรับดาเมจ +45% (ผ่าน <span class="chip"><img src="images/Art/2DItems/Gems/New/NewSupport/LivingLightningSupportGem.webp">Living Lightning II</span> + Wolves + อาจรวม clone) · ทำถูกลำดับต่างกัน ≈ <span class="dmg">300% more damage</span></p></div>
+
+<div class="imp"><span class="lbl">⭐ Pounce</span>
+<p style="margin:0"><span class="chip"><img src="images/Art/2DItems/Gems/New/WolfLeapAttackSkillGem.webp">Pounce</span> ต้อง active <mark>ทั้ง 2 weapon set</mark> (ถอด staff → allocate ทั้งสอง set → ใส่กลับ) ไม่งั้นหมาป่าหายตอนสลับอาวุธ</p></div>
+
+<h2 class="section">💧 Mana</h2>
+<ul>
+  <li><strong class="k">Well of Power</strong> anoint แก้ปัญหา mana (เพราะใช้ power charge เยอะ)</li>
+  <li><strong class="k">Conservative Casting</strong> — 3 node ลดค่าร่ายคุ้มมาก</li>
+  <li>ช่วงต้นใช้ <strong>Lavianga's Spirits</strong> ได้ (แก้ขัดแต่ไม่ efficient ที่สุด)</li>
+</ul>
+
+<h2 class="section">📜 Quest Rewards</h2>
+<table>
+  <thead><tr><th>Act / โซน</th><th>รางวัล</th></tr></thead>
+  <tbody>
+    <tr><td>Act 1 — Beira</td><td><mark>+10% Cold Res</mark></td></tr>
+    <tr><td>Act 1 — King in the Mists</td><td><mark>+30 Spirit</mark></td></tr>
+    <tr><td>Act 1 — Candlemass</td><td>+20 max Life</td></tr>
+    <tr><td>Act 2 — Sisters of Garukhan</td><td><mark>+10% Lightning Res</mark></td></tr>
+    <tr><td>Act 2 — Medallion</td><td>+30% Charm Charges + 1 Charm Slot</td></tr>
+    <tr><td>Act 3 — Ignagduk</td><td><mark>+30 Spirit</mark></td></tr>
+    <tr><td>Act 3 — Blackjaw</td><td><mark>+10% Fire Res</mark></td></tr>
+    <tr><td>Act 3 — Venom Draught</td><td>+25% Mana Regen Rate</td></tr>
+    <tr><td>Act 4 — Goddess of Justice</td><td>+30% Mana Recovery from Flasks</td></tr>
+    <tr><td>Act 4 — Navali's Rest</td><td>+5% max Mana</td></tr>
+    <tr><td>Act 4 — Halls of the Dead (3 tests)</td><td><mark>+5% Fire / Cold / Lightning Res</mark></td></tr>
+    <tr><td>Interlude — Molten Shrine</td><td>+5% max Life</td></tr>
+    <tr><td>Interlude — Tabana's Pillar</td><td>+3% Move Speed</td></tr>
+    <tr><td>Interlude — Lythara</td><td><mark>+40 Spirit</mark></td></tr>
+  </tbody>
+</table>
+
+<div class="note"><strong>Leveling:</strong> ตามไกด์ของ fgkorbyn21 (0.5 League Start Monk Leveling) · ส่วน <strong class="k">Equipment</strong> และ <strong class="k">Passive Tree</strong> เป็น widget โต้ตอบบนเว็บ ดูเต็มที่ <a href="https://mobalytics.gg/poe-2/builds/hollow-assault-beyblade" target="_blank">หน้าต้นฉบับ</a> หรือดูสรุป gear/jewel ละเอียดในแท็บคลิป</div>
+
+</div><!-- /tab-moba -->
+
+<footer>ถอด+แปลไทยจากคลิปไกด์ Hollow Assault · ไอคอนจากฐานข้อมูล <code>poe2db</code> (โฟลเดอร์ <code>images/</code>) · ชื่อไทยดึงจากหน้า <code>/th/</code> ของ poe2db.tw</footer>
+
+</div>
+<script>
+  document.querySelectorAll("nav.tabs button").forEach((btn)=>{btn.addEventListener("click",()=>{
+    const t=btn.dataset.tab;
+    document.querySelectorAll("nav.tabs button").forEach(b=>b.classList.toggle("active",b===btn));
+    document.querySelectorAll(".tab-panel").forEach(p=>p.classList.toggle("active",p.id==="tab-"+t));
+    window.scrollTo({top:0,behavior:"smooth"});});});
+</script>
+</body>
+</html>

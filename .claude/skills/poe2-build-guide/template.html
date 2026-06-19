@@ -1,0 +1,120 @@
+<!doctype html>
+<!-- TEMPLATE for poe2-build-guide skill. Copy to project root as build-guide-<name>.html,
+     then fill the sections. Reference icons as images/<image_path> from the poe2db DB.
+     Components below: .skill (gallery card), .chip (inline icon), .imp + <mark> (highlight),
+     table (gem list / quest rewards), nav.tabs + .tab-panel (multi-source tabs). -->
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PoE2 Build Guide (แปลไทย)</title>
+<style>
+  :root{--bg:#0e0d0b;--panel:#17150f;--panel2:#1f1c14;--line:#3a3422;--gold:#c9a44a;--gold2:#e8c970;
+    --text:#e8e1cf;--muted:#a99f86;--blue:#7aa7d6;--green:#86c06a;--red:#d2695f}
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#0b0a08,#13110c);color:var(--text);
+    font-family:"Segoe UI",Tahoma,system-ui,sans-serif;line-height:1.75;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 20px 80px}
+  header.hero{text-align:center;padding:26px 18px;border:1px solid var(--line);border-radius:14px;
+    background:radial-gradient(120% 140% at 50% 0%,#241f14,#100e09);margin-bottom:26px}
+  header.hero h1{margin:0 0 6px;font-size:27px;color:var(--gold2)}
+  header.hero .sub{color:var(--muted);font-size:15px}
+  .tag{display:inline-block;margin:10px 6px 0;padding:4px 12px;border:1px solid var(--line);
+    border-radius:999px;font-size:13px;color:var(--gold);background:#1c1910}
+  h2.section{display:flex;align-items:center;gap:10px;margin:34px 0 14px;padding-bottom:8px;
+    border-bottom:2px solid var(--line);color:var(--gold2);font-size:21px}
+  p{margin:0 0 13px} .lead{color:var(--muted);font-style:italic;margin-bottom:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+  .card h3{margin:0 0 10px;color:var(--gold);font-size:17px}
+  strong.k{color:var(--gold2)} .en{color:var(--muted);font-size:13.5px}
+  ul{margin:6px 0;padding-left:22px} li{margin:5px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;margin:12px 0}
+  .skill{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;
+    background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 8px}
+  .skill img{width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
+  .skill .nth{font-weight:600;font-size:13.5px} .skill .nen{font-size:11.5px;color:var(--muted)}
+  .skill.spirit{border-color:#5e7e9e} .skill.support{border-color:#7a6a3a}
+  .skill.uniq{border-color:#8a5a2a;background:#22180f}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:#211d13;border:1px solid var(--line);
+    border-radius:8px;padding:2px 9px 2px 4px;margin:2px;vertical-align:middle;font-size:14px}
+  .chip img{width:24px;height:24px;object-fit:contain}
+  .note{font-size:13px;color:var(--muted);border-left:3px solid var(--gold);padding:6px 0 6px 12px;margin:10px 0;background:#15130d}
+  .imp{border-left:4px solid var(--gold2);background:linear-gradient(90deg,#2a2310,#17150f);
+    padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0}
+  .imp .lbl{display:inline-block;font-size:11.5px;letter-spacing:1px;text-transform:uppercase;
+    color:var(--gold2);font-weight:700;margin-bottom:4px}
+  mark{background:#4a3a12;color:var(--gold2);padding:0 4px;border-radius:3px;font-weight:600}
+  .dmg{color:var(--gold2);font-weight:700}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:middle}
+  th{background:#221d12;color:var(--gold);font-size:13px} tr:nth-child(even) td{background:#15130d}
+  td .gi{display:flex;align-items:center;gap:8px} td .gi img{width:30px;height:30px;object-fit:contain}
+  a{color:var(--blue)}
+  footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:18px}
+  /* tabs (use only when there are multiple sources) */
+  nav.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+  nav.tabs button{flex:1 1 200px;cursor:pointer;font:inherit;font-size:15px;font-weight:600;color:var(--muted);
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;transition:.15s}
+  nav.tabs button:hover{color:var(--text);border-color:var(--gold)}
+  nav.tabs button.active{color:#161208;background:linear-gradient(180deg,var(--gold2),var(--gold));border-color:var(--gold2)}
+  .tab-panel{display:none} .tab-panel.active{display:block}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>⚡ BUILD NAME — หัวข้อ</h1>
+    <div class="sub">คำโปรย / creator / patch</div>
+    <div><span class="tag">จุดเด่น 1</span><span class="tag">จุดเด่น 2</span></div>
+  </header>
+
+  <!-- OPTIONAL multi-source tabs -->
+  <nav class="tabs">
+    <button class="active" data-tab="a">📺 แท็บ A</button>
+    <button data-tab="b">📋 แท็บ B</button>
+  </nav>
+
+  <div class="tab-panel active" id="tab-a">
+    <p class="lead">หมายเหตุ: คำแปลแบบเรียบเรียง · ชื่อสกิล/ไอเทมคงอังกฤษ + ชื่อไทย + ไอคอนจาก poe2db</p>
+
+    <!-- ICON GALLERY: one .skill per key skill/item -->
+    <h2 class="section">🗂️ ไอคอนสกิล/ไอเทมหลัก</h2>
+    <div class="grid">
+      <div class="skill"><img src="images/Art/2DItems/Gems/New/XxxSkillGem.webp" alt="X"><span class="nth">ชื่อไทย</span><span class="nen">English</span></div>
+      <!-- spirit gem: class="skill spirit" · support: class="skill support" · unique: class="skill uniq" -->
+    </div>
+
+    <!-- SECTIONS -->
+    <h2 class="section">🎬 หัวข้อ</h2>
+    <div class="card">
+      <h3>ชื่อการ์ด</h3>
+      <p>ข้อความ … สกิล <span class="chip"><img src="images/Art/.../XxxSkillGem.webp">Skill Name</span> …</p>
+    </div>
+
+    <!-- HIGHLIGHT important info -->
+    <div class="imp"><span class="lbl">⭐ จุดสำคัญ</span>
+      <p style="margin:0"><mark>ข้อมูลสำคัญ เช่น skill rotation / stat req</mark></p></div>
+
+    <!-- TABLE example (gem list / quest rewards) -->
+    <table>
+      <thead><tr><th>#</th><th>Gem</th><th>Lv</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><div class="gi"><img src="images/Art/.../XxxSkillGem.webp">Name <span class="en">ชื่อไทย</span></div></td><td>1</td></tr>
+      </tbody>
+    </table>
+  </div><!-- /tab-a -->
+
+  <div class="tab-panel" id="tab-b"> … </div>
+
+  <footer>แปลไทยจาก … · ไอคอนจากฐานข้อมูล poe2db (โฟลเดอร์ images/)</footer>
+</div>
+<script>
+  document.querySelectorAll("nav.tabs button").forEach((btn)=>{btn.addEventListener("click",()=>{
+    const t=btn.dataset.tab;
+    document.querySelectorAll("nav.tabs button").forEach(b=>b.classList.toggle("active",b===btn));
+    document.querySelectorAll(".tab-panel").forEach(p=>p.classList.toggle("active",p.id==="tab-"+t));
+    window.scrollTo({top:0,behavior:"smooth"});});});
+</script>
+</body>
+</html>
