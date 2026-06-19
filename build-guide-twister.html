@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twister Spirit Walker — Endgame Update (แปลไทย)</title>
+<style>
+  :root{
+    --bg:#0e0d0b; --panel:#17150f; --panel2:#1f1c14; --line:#3a3422;
+    --gold:#c9a44a; --gold2:#e8c970; --text:#e8e1cf; --muted:#a99f86;
+    --blue:#7aa7d6; --green:#86c06a; --red:#d2695f;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#0b0a08,#13110c);color:var(--text);
+    font-family:"Segoe UI",Tahoma,system-ui,sans-serif;line-height:1.75;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:28px 20px 80px}
+  header.hero{text-align:center;padding:26px 18px;border:1px solid var(--line);
+    border-radius:14px;background:radial-gradient(120% 140% at 50% 0%,#241f14,#100e09);margin-bottom:26px}
+  header.hero h1{margin:0 0 6px;font-size:27px;color:var(--gold2);letter-spacing:.3px}
+  header.hero .sub{color:var(--muted);font-size:15px}
+  .tag{display:inline-block;margin:10px 6px 0;padding:4px 12px;border:1px solid var(--line);
+    border-radius:999px;font-size:13px;color:var(--gold);background:#1c1910}
+  h2.section{display:flex;align-items:center;gap:10px;margin:34px 0 14px;padding-bottom:8px;
+    border-bottom:2px solid var(--line);color:var(--gold2);font-size:21px}
+  h2.section .ic{font-size:20px}
+  p{margin:0 0 13px}
+  .lead{color:var(--muted);font-style:italic;margin-bottom:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+  .card h3{margin:0 0 10px;color:var(--gold);font-size:17px}
+  strong.k{color:var(--gold2)}
+  .en{color:var(--muted);font-size:13.5px}
+  ul{margin:6px 0 6px;padding-left:22px}
+  li{margin:5px 0}
+  /* skill grid */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;margin:12px 0 4px}
+  .skill{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;
+    background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 8px}
+  .skill img{width:48px;height:48px;object-fit:contain;image-rendering:auto;
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
+  .skill .nth{font-weight:600;font-size:13.5px;color:var(--text);line-height:1.3}
+  .skill .nen{font-size:11.5px;color:var(--muted)}
+  .skill.spirit{border-color:#5e7e9e}
+  .skill.support{border-color:#7a6a3a}
+  .skill.uniq{border-color:#8a5a2a;background:#22180f}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:#211d13;border:1px solid var(--line);
+    border-radius:8px;padding:2px 9px 2px 4px;margin:2px 2px;vertical-align:middle;font-size:14px}
+  .chip img{width:24px;height:24px;object-fit:contain}
+  .note{font-size:13px;color:var(--muted);border-left:3px solid var(--gold);padding:6px 0 6px 12px;margin:10px 0;background:#15130d}
+  .legend{font-size:12.5px;color:var(--muted);margin-top:8px}
+  .legend b{color:var(--blue)} .legend i{color:#caa}
+  .dmg{color:var(--gold2);font-weight:700}
+  footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:18px}
+  a{color:var(--blue)}
+  /* tabs */
+  nav.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+  nav.tabs button{flex:1 1 200px;cursor:pointer;font:inherit;font-size:15px;font-weight:600;
+    color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:12px 14px;transition:.15s}
+  nav.tabs button:hover{color:var(--text);border-color:var(--gold)}
+  nav.tabs button.active{color:#161208;background:linear-gradient(180deg,var(--gold2),var(--gold));
+    border-color:var(--gold2);box-shadow:0 2px 10px rgba(201,164,74,.25)}
+  .tab-panel{display:none}
+  .tab-panel.active{display:block;animation:fade .2s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  /* highlight / important callouts */
+  .imp{border-left:4px solid var(--gold2);background:linear-gradient(90deg,#2a2310,#17150f);
+    padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0}
+  .imp .lbl{display:inline-block;font-size:11.5px;letter-spacing:1px;text-transform:uppercase;
+    color:var(--gold2);font-weight:700;margin-bottom:4px}
+  mark{background:#4a3a12;color:var(--gold2);padding:0 4px;border-radius:3px;font-weight:600}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:middle}
+  th{background:#221d12;color:var(--gold);font-size:13px}
+  tr:nth-child(even) td{background:#15130d}
+  td .gi{display:flex;align-items:center;gap:8px}
+  td .gi img{width:30px;height:30px;object-fit:contain}
+  .lv{color:var(--green);font-weight:600;white-space:nowrap}
+  .set1{color:var(--blue)} .set2{color:#d8a0d8}
+  .meta-links a{margin-right:12px;font-size:13px;white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>⚡ Twister Spirit Walker — อัปเดต Endgame</h1>
+  <div class="sub">บิลด์ "Twister" ของ Spirit Walker · ถอดข้อความ + แปลไทยจากคลิปของ Sides</div>
+  <div>
+    <span class="tag">DPS ~16 ล้าน</span>
+    <span class="tag">ละลายบอส Pinnacle ในไม่กี่วินาที</span>
+    <span class="tag">เน้น Evade / Deflect</span>
+    <span class="tag">เล่นรอบ Frenzy Charge</span>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="active" data-tab="video">📺 แปลจากคลิป (Endgame Update)</button>
+  <button data-tab="moba">📋 ไกด์ Mobalytics (โครงบิลด์ + เลเวลลิ่ง)</button>
+</nav>
+
+<div class="tab-panel active" id="tab-video">
+<p class="lead">หมายเหตุ: นี่คือคำแปลแบบเรียบเรียงให้อ่านง่าย (ไม่ใช่คำต่อคำ) เนื้อหาครบตามคลิป · ชื่อสกิล/ไอเทมคงภาษาอังกฤษไว้ พร้อมชื่อไทยจากเกม และรูปไอคอนจากฐานข้อมูล poe2db ของเรา</p>
+
+<!-- ====================== SKILL REFERENCE GALLERY ====================== -->
+<h2 class="section"><span class="ic">🗂️</span> ไอคอนสกิล/ไอเทมหลักที่พูดถึง</h2>
+<p class="legend">ขอบสี: <b>ฟ้า = Spirit gem</b> · <i>ส้ม = Unique item</i> · ทอง = Support · เทา = Skill</p>
+<div class="grid">
+  <div class="skill"><img src="images/Art/2DItems/Gems/New/TwisterSkillGem.webp" alt="Twister"><span class="nth">เกลียวพายุ</span><span class="nen">Twister</span></div>
+  <div class="skill"><img src="images/Art/2DItems/Gems/New/WhirlingSlashSkillGem.webp" alt="Whirling Slash"><span class="nth">ฟันเรียกพายุ</span><span class="nen">Whirling Slash</span></div>
+  <div class="skill"><img src="images/Art/2DItems/Gems/New/RangerBarrageSkillGem.webp" alt="Barrage"><span class="nth">ระดมยิง</span><span class="nen">Barrage</span></div>
+  <div class="skill"><img src="images/Art/2DItems/Gems/New/IceShotSkillGem.webp" alt="Ice Shot"><span class="nth">ศรน้ำแข็ง</span><span class="nen">Ice Shot</span></div>
+  <div class="skill spirit"><img src="images/Art/2DItems/Gems/New/RangerCombatFrenzySkillGem.webp" alt="Combat Frenzy"><span class="nth">รบราบ้าระห่ำ</span><span class="nen">Combat Frenzy</span></div>
+  <div class="skill spirit"><img src="images/Art/2DItems/Gems/New/HuntressTrinitySkillGem.webp" alt="Trinity"><span class="nth">พลังไตรธาตุ</span><span class="nen">Trinity</span></div>
+  <div class="skill spirit"><img src="images/Art/2DItems/Gems/New/GhostDanceSkillGem.webp" alt="Ghost Dance"><span class="nth">ระบำวิญญาณ</span><span class="nen">Ghost Dance</span></div>
+  <div class="skill spirit"><img src="images/Art/2DItems/Gems/New/WindDancerSkillGem.webp" alt="Wind Dancer"><span class="nth">ลมร่ายรำ</span><span class="nen">Wind Dancer</span></div>
+  <div class="skill spirit"><img src="images/Art/2DItems/Gems/New/HeraldofThunderSkillGem.webp" alt="Herald of Thunder"><span class="nth">สาสน์สายฟ้า</span><span class="nen">Herald of Thunder</span></div>
+  <div class="skill spirit"><img src="images/Art/2DItems/Gems/New/HeraldofIceSkillGem.webp" alt="Herald of Ice"><span class="nth">สาสน์น้ำแข็ง</span><span class="nen">Herald of Ice</span></div>
+  <div class="skill"><img src="images/Art/2DItems/Gems/New/ElementalWeaknessSkillGem.webp" alt="Elemental Weakness"><span class="nth">แพ้ธาตุ</span><span class="nen">Elemental Weakness</span></div>
+  <div class="skill"><img src="images/Art/2DItems/Gems/New/SnipersMarkSkillGem.webp" alt="Sniper's Mark"><span class="nth">คำแช่งนักซุ่มยิง</span><span class="nen">Sniper's Mark</span></div>
+  <div class="skill"><img src="images/Art/2DItems/Gems/New/FreezingMarkSkillGem.webp" alt="Freezing Mark"><span class="nth">คำแช่งแช่แข็ง</span><span class="nen">Freezing Mark</span></div>
+  <div class="skill support"><img src="images/Art/2DItems/Gems/New/NewSupport/Lineage/OlrothsConviction.webp" alt="Olroth's Conviction"><span class="nth">Olroth's Conviction</span><span class="nen">Support</span></div>
+  <div class="skill support"><img src="images/Art/2DItems/Gems/New/NewSupport/ExpositionSupportGem.webp" alt="Exposing Cry"><span class="nth">Exposing Cry</span><span class="nen">Support</span></div>
+  <div class="skill uniq"><img src="images/Art/2DItems/Armours/BodyArmours/Uniques/TheAncientOrder.webp" alt="Forgotten Warden"><span class="nth">Forgotten Warden</span><span class="nen">Body Armour (เลิกใช้)</span></div>
+  <div class="skill uniq"><img src="images/Art/2DItems/Weapons/OneHandWeapons/Scepters/Uniques/SacredFlame.webp" alt="Sacred Flame"><span class="nth">Sacred Flame</span><span class="nen">Sceptre</span></div>
+  <div class="skill uniq"><img src="images/Art/2DItems/Jewels/Uniques/ApostatesHeart.webp" alt="Heart of the Well"><span class="nth">Heart of the Well</span><span class="nen">Jewel</span></div>
+  <div class="skill uniq"><img src="images/Art/2DItems/Jewels/RitualJewel.webp" alt="From Nothing"><span class="nth">From Nothing</span><span class="nen">Jewel (เลิกใช้)</span></div>
+</div>
+
+<!-- ====================== INTRO ====================== -->
+<h2 class="section"><span class="ic">🎬</span> เกริ่นนำ (Intro)</h2>
+<p>สวัสดีทุกคน ผมชื่อ <strong class="k">Sides</strong> วันนี้มาพร้อมอัปเดต endgame สำหรับบิลด์
+<span class="chip"><img src="images/Art/2DItems/Gems/New/TwisterSkillGem.webp">Twister</span> Spirit Walker ของเรา ตอนนี้เราทำดาเมจได้ <span class="dmg">เกิน 16 ล้าน</span>
+ด้วย Twister — ละลายบอส Pinnacle ที่จัดเต็มสุดได้ภายในไม่กี่วินาที</p>
+<p>นอกจากนี้เรายังปรับ <strong class="k">ชั้นการป้องกัน (defensive layers)</strong> ครั้งใหญ่ ให้มีโอกาส
+<strong class="k">หลบ (Evade)</strong> และ <strong class="k">ปัดป้อง (Deflect)</strong> สูงขึ้นมาก เล่นแมพ T15/T16
+แบบ juiced + delirious ได้สบายขึ้นเยอะ และตอนนี้เราเล่นเข้าหา <strong class="k">Frenzy Charge</strong> มากขึ้น
+ซึ่งช่วยเพิ่มดาเมจและช่วยตอนเคลียร์แมพ (ยิงกระสุนออกได้เยอะขึ้นมาก)</p>
+<p class="note">ถ้าชอบคลิปไกด์นี้ ฝากกด Like + Subscribe ช่วยช่องด้วยนะครับ และตอนนี้มีไลฟ์สดทั้ง YouTube และ Twitch ลิงก์อยู่ใน description/คอมเมนต์</p>
+
+<!-- ====================== GEAR ====================== -->
+<h2 class="section"><span class="ic">🛡️</span> การเปลี่ยนอุปกรณ์ครั้งใหญ่ (Major Gear Changes)</h2>
+
+<div class="card">
+  <h3>ถุงมือ (Gloves) — เลิก freeze tech ไปเน้นดาเมจตรง ๆ</h3>
+  <p>เลิกใช้ถุงมือสาย freeze แล้วหันมาเน้นดาเมจล้วน ๆ เหตุผลคือเราดาเมจสูงมากจน <strong class="k">แทบไม่ได้แช่แข็งศัตรูตอนเคลียร์แมพ</strong>
+  ส่วนตอนตีบอส Pinnacle ก็แช่แข็งไม่สม่ำเสมอพอจะมี uptime จริง (จะแข็งก็ตอนเลือดเหลือ ~30% เท่านั้น)
+  เลยไม่คุ้มที่จะเล่นหนักไปทาง freeze</p>
+  <p>โยน freeze tech ทิ้ง (รวมถึง Chaos Inoculation จาก
+  <span class="chip"><img src="images/Art/2DItems/Jewels/RitualJewel.webp">From Nothing</span> และถุงมือ freeze) ทำให้ได้
+  <strong class="k">ดาเมจทันที (instant damage)</strong> มากขึ้นโดยไม่ต้องรอ build-up และได้ชั้นป้องกันเพิ่มด้วย</p>
+  <p><strong class="k">ค่าที่ควรมองหาบนถุงมือ:</strong> Evasion Rating ล้วน, Lightning Damage to Attacks, Projectile Speed, +Levels, Critical Damage Bonus</p>
+  <p class="note"><strong>วิธี roll ค่าพวกนี้:</strong> ต้องใช้ <strong class="k">Coler's Hunt rune</strong> (rune ใหม่ของซีซั่นนี้) ที่ทำให้ถุงมือ roll
+  modifier สาย <strong>Marksman</strong> ได้ (เช่น projectile speed, +prod levels) เมื่อใส่ rune แล้วค่อย chaos/roll จนได้
+  หรือซื้อถุงมือที่ฝัง rune + เลเวล มาเลย — คราฟต์แพงแต่ดาเมจมหาศาล ถ้ายังไม่ไหวให้ใช้ถุงมือ rare ที่มี Lightning Damage to Attacks + Crit Damage Bonus ไปก่อน</p>
+</div>
+
+<div class="card">
+  <h3>เกราะตัว (Body Armour) — เลิก Forgotten Warden</h3>
+  <p>เลิกใช้ <span class="chip"><img src="images/Art/2DItems/Armours/BodyArmours/Uniques/TheAncientOrder.webp">Forgotten Warden</span>
+  เปลี่ยนไปใช้เกราะ <strong class="k">Evasion Rating ล้วน + Deflection</strong> ทำให้โอกาส Evade และ Deflect สูงขึ้นมาก
+  และยังได้ Energy Shield พอ ๆ เดิม เพราะกลับไปจับ <strong class="k">Spectral Ward</strong> (ได้ ES ต่อ Evasion Rating)</p>
+  <p>ตอนนี้มี currency พอจะซื้อเกราะ pure evasion ดี ๆ แล้ว — เดิมใช้ Forgotten Warden เพราะถูกและอึดกว่าเกราะ evasion ทั่วไป
+  แต่ตอนนี้เปลี่ยนได้แล้ว อึดขึ้นเยอะ โดยเฉพาะตอนเล่นแมพ juiced delirious</p>
+</div>
+
+<div class="card">
+  <h3>เครื่องประดับอื่น ๆ</h3>
+  <ul>
+    <li><strong class="k">Amulet:</strong> สลับเป็นตัวใหม่ (ค่าใกล้เดิม: increased evasion, +3 page levels, max ES) แต่ต้อง roll <strong>+Dexterity</strong> เพื่อให้รันทุกอย่างในบิลด์ได้ (จะ roll Int/Str ก็ได้ตามต้องการ) ได้ global evasion + ES มาด้วย · ยังใช้ anoint <strong class="k">Stormbreaker</strong> (ดีที่สุด เพิ่มดาเมจเยอะ)</li>
+    <li><strong class="k">Belt:</strong> เก็บใหม่เน้น res เยอะ ๆ (chaos สูง + fire/cold) เพื่อตันต้านทาน · อยากได้ Headhunter/Mageblood แต่ยังไม่มี ถ้ามีก็ใส่ได้แต่ต้องคุม res ให้ตัน</li>
+    <li><strong class="k">Helmet:</strong> ES ล้วน เพื่อเข้า Stalking Panther ได้ 1 evasion ต่อ 1 ES (มี 400 evasion + 400 ES) ขาด res ก็ roll res</li>
+    <li><strong class="k">Unset Ring:</strong> ตัวเดิม — Cold & Lightning Damage to Attacks + res ที่ขาด (roll Dex/Str ได้ถ้าจำเป็น)</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>อาวุธ + Sceptre</h3>
+  <ul>
+    <li><strong class="k">Timing/แหวน Twister:</strong> "ring" ที่ทำให้ Twister มี Ignite, Shock และ Chilling Ground ตลอด — <span class="dmg">เพิ่มดาเมจเป็น 2 เท่า</span> ควรหามาให้ไวที่สุดเมื่อเข้า endgame</li>
+    <li><strong class="k">Spear:</strong> ยังใช้ Ordained Grand Spear อยากคราฟต์ Aoyan spear ดี ๆ แต่ใช้ currency เยอะเลยรอก่อน — เน้น crit chance สูง + lightning/physical damage พอประมาณ ตัวนี้เป็น DPS spear กลาง ๆ ที่ใช้ยาวได้</li>
+    <li><strong class="k">Sceptre (offense):</strong> ใช้ <span class="chip"><img src="images/Art/2DItems/Weapons/OneHandWeapons/Scepters/Uniques/SacredFlame.webp">Sacred Flame</span>
+    เพิ่มดาเมจ + extra fire พอให้ได้ fire resonance กับ <strong>Trinity</strong> (แล้วไปโฟกัส cold/lightning ที่อื่น เช่น Heart of the Well แบบ double gain damage) · ถ้าได้ double socket ใส่ <strong>rabbit idol</strong> (+15% spirit) และ <strong>idol of gold</strong> (+15% damage เมื่อ companion อยู่ใกล้)</li>
+    <li><strong class="k">Weapon Set 1 (spear):</strong> เน้น attack speed สูง ๆ เพื่อ Whirling Slash ตีเร็วขึ้น · ปล่อยมือซ้าย (off-hand) ว่างไว้ ให้ <strong>Dance with Death</strong> เพิ่ม skill speed</li>
+    <li class="note"><strong>ปัญหา Mana:</strong> ตั้ง Whirling Slash เป็น <strong>เลเวล 1</strong> มักแก้ปัญหา mana ได้หมด · ถ้ายังไม่พอให้พกขวด (flask) ที่คืน mana ต่อวินาที (หาได้ถูกมาก ~10x) — ในผังยังมีจุดเพิ่ม attack speed ขณะ flask ทำงานด้วย</li>
+  </ul>
+</div>
+
+<!-- ====================== GEMS ====================== -->
+<h2 class="section"><span class="ic">💎</span> การเปลี่ยน Gem ครั้งใหญ่ (Major Gem Changes)</h2>
+
+<div class="card">
+  <h3>Primal Bounty</h3>
+  <p>ไม่เปลี่ยน — ยังใช้ <span class="chip"><img src="images/Art/2DItems/Gems/New/NewSupport/Lineage/OlrothsConviction.webp">Olroth's Conviction</span>
+  เพื่อให้ใช้ได้ <strong class="k">2 ครั้ง</strong>แทน 1 (ปกติ dodge roll กิน feather จะได้ attack เสริมพลังแค่ครั้งเดียว แต่ตอนนี้ได้ <strong>3 attack</strong> ที่เสริมพลัง)
+  เพิ่ม quality of life และดาเมจเยอะ</p>
+</div>
+
+<div class="card">
+  <h3>Vivid Stampede</h3>
+  <p>เหมือนเดิม — Encroaching Ground (AoE ของ shock ground มากขึ้น), Blind Side (ดาเมจมากขึ้น), Magnified Area (AoE), Persistent Ground + Cooldown Recovery</p>
+</div>
+
+<div class="card">
+  <h3>Wild Protector (companion)</h3>
+  <p>สลับ 2 อย่าง — ยังใช้ Hawking Minions, Blind II และ <strong>Ramir's Requital</strong> (ดาเมจที่เรารับ 10% เด้งไปที่ companion แล้วได้คืนเป็นเลือด 200% — ดีต่อความอึด)
+  ใส่ <span class="chip"><img src="images/Art/2DItems/Gems/New/NewSupport/ExpositionSupportGem.webp">Exposing Cry</span> แต่เปลี่ยนเป็น <strong>Potent Exposure</strong>
+  เพื่อลด resistance ศัตรูได้มากขึ้น</p>
+</div>
+
+<div class="card">
+  <h3>Whirling Slash <span class="en">(ฟันเรียกพายุ)</span></h3>
+  <p><span class="chip"><img src="images/Art/2DItems/Gems/New/WhirlingSlashSkillGem.webp">Whirling Slash</span>
+  ใช้: Rapid Attacks III (attack speed), Rage III (ได้ rage ตอน hit + ถ้ายังไม่ max rage ได้ attack speed เพิ่ม), Magnified Area II (AoE),
+  Blazing Critical (crit แล้วได้ 15% damage เป็น extra fire), Pinpoint Critical (crit chance เพื่อ uptime ของ Blazing Critical)</p>
+</div>
+
+<div class="card">
+  <h3>Twister <span class="en">(เกลียวพายุ — สกิลหลัก)</span></h3>
+  <p><span class="chip"><img src="images/Art/2DItems/Gems/New/TwisterSkillGem.webp">Twister</span> ใช้:</p>
+  <ul>
+    <li><strong>Blindside</strong> — crit chance + crit damage มากขึ้น (ถอด Pinpoint Critical ออก เพราะตอนศัตรู dazed+blinded เรามี crit ~70% อยู่แล้ว) ให้ crit damage ดีกว่าเดิมมาก</li>
+    <li><strong>Concentrated Area</strong> — +30% area damage (เสีย area นิดเดียว แทบไม่รู้สึก) ดาเมจมากกว่าใช้ Liberation</li>
+    <li><strong>Projectile Acceleration III</strong> — เพราะเรามี projectile speed เยอะ (จาก ascendancy + ถุงมือ + global) ทำให้ projectile speed แปลงเป็นดาเมจ → DPS เพิ่มเยอะ</li>
+    <li><strong>Elemental Armament II</strong> (+25% LE damage), <strong>Prolonged Duration</strong> (+35% skill effect duration → Twister อยู่นานขึ้น, multi-hit/bounce มากขึ้น, เคลียร์ดีขึ้น)</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Ice Shot / Ice-tipped Arrows</h3>
+  <p><span class="chip"><img src="images/Art/2DItems/Gems/New/IceShotSkillGem.webp">Ice Shot</span>
+  ใช้: Elemental Armament II, Cooldown Recovery II, Freeze, Cold Attunement, Short Fuse I</p>
+</div>
+
+<div class="card">
+  <h3>Barrage <span class="en">(ระดมยิง)</span></h3>
+  <p><span class="chip"><img src="images/Art/2DItems/Gems/New/RangerBarrageSkillGem.webp">Barrage</span>
+  เพราะเล่นเข้าหา Frenzy Charge มากขึ้น ทำให้ยิงกระสุนเยอะขึ้น → DPS เพิ่ม · ใช้ Rapid Casting II (cast เร็วขึ้น), Cooldown Recovery II (ได้ charge คืนไว),
+  <strong>Utar's Constellation</strong> (3 charges แทน 1 → spam ได้ 3 ครั้ง) เข้ากับ Orat's Constellation + Primal Bounty (3 uses)
+  → ได้ 3 barrage พร้อม 3 primal bounty เสริมพลังเต็ม → burst damage มหาศาล โดยเฉพาะตอนตีบอส Pinnacle</p>
+</div>
+
+<div class="card">
+  <h3>Combat Frenzy <span class="en">(แทน Herald of Thunder)</span></h3>
+  <p>เปลี่ยน <span class="chip"><img src="images/Art/2DItems/Gems/New/HeraldofThunderSkillGem.webp">Herald of Thunder</span> เป็น
+  <span class="chip"><img src="images/Art/2DItems/Gems/New/RangerCombatFrenzySkillGem.webp">Combat Frenzy</span>
+  เพื่อสะสม frenzy charge โดยเฉพาะตอนเคลียร์แมพ (ได้ charge เมื่อแช่แข็งศัตรู ทุก 6 วินาที → uptime เต็มแทบตลอดตอนแมพ)
+  เสริมด้วย Charge Profusion (30% โอกาสได้ charge เพิ่ม + 15% ได้ random charge) · ใส่ Empowered Sparks ไว้เผื่อ (ไม่แน่ใจว่ามีผล)</p>
+</div>
+
+<div class="card">
+  <h3>Elemental Weakness <span class="en">(แทน Herald of Ice)</span></h3>
+  <p>ถอด <span class="chip"><img src="images/Art/2DItems/Gems/New/HeraldofIceSkillGem.webp">Herald of Ice</span> ใส่
+  <span class="chip"><img src="images/Art/2DItems/Gems/New/ElementalWeaknessSkillGem.webp">Elemental Weakness</span> (Ellie Weakness)
+  — เคลียร์ดีพอ ๆ เดิม แต่ดาเมจเพิ่มเยอะมาก โดยเฉพาะตอนตีบอส (ลด elemental res ศัตรูได้ถึง <span class="dmg">-57%</span>)</p>
+  <p class="note">ถ้ามี Rocky Flow บน Twister ไม่ต้องใช้ตัวนี้ (มันจะกลับค่า res) เอา Herald กลับมาใส่ได้ · แต่ตอนนี้ยังไม่มี เลยใช้ Elemental Weakness เพื่อ DPS</p>
+  <p>เสริมด้วย: Magnified Area II (AoE), Heightened Curse (เพิ่ม magnitude → ลด res มากขึ้น), Curse the Ground (เป็น AoE แบบ duration — เดินเข้าโดน curse เอง), Prolonged Duration II (อยู่นานขึ้น)</p>
+</div>
+
+<div class="card">
+  <h3>Sniper's Mark <span class="en">(แทน Freezing Mark)</span></h3>
+  <p>เปลี่ยน <span class="chip"><img src="images/Art/2DItems/Gems/New/FreezingMarkSkillGem.webp">Freezing Mark</span> เป็น
+  <span class="chip"><img src="images/Art/2DItems/Gems/New/SnipersMarkSkillGem.webp">Sniper's Mark</span> (เลิกสาย freeze แล้ว)
+  — ดาเมจเยอะกว่า + ได้ frenzy charge การันตีเมื่อ crit ศัตรู (เป็นวิธีเลี้ยง frenzy charge ตอนตีบอส)</p>
+  <p>เสริมด้วย <strong>Eternal Mark</strong> (mark ไม่ถูกใช้หมดครั้งแรก = ได้ 2 uses ดีมากตอนตีบอส), Charge Marks (วางแล้ว leave shot to ground), Charge Profusion (ได้ charge เพิ่ม + random)</p>
+</div>
+
+<div class="card">
+  <h3>Aura Skills</h3>
+  <ul>
+    <li><span class="chip"><img src="images/Art/2DItems/Gems/New/HuntressTrinitySkillGem.webp">Trinity</span> — ยังใช้ (ได้ elemental damage ต่อ affinity เยอะขึ้น) ได้ affinity จากการ hit ธาตุที่แรงที่สุด เลยต้อง <strong>บาลานซ์ธาตุทั้ง 3</strong> · เสริม Fire Mastery (+level)</li>
+    <li><span class="chip"><img src="images/Art/2DItems/Gems/New/WindDancerSkillGem.webp">Wind Dancer</span> — ได้ charge เพิ่ม + evasion rating ต่อ charge (support อะไรก็ได้ ผมใส่ Maim + Pin II)</li>
+    <li><span class="chip"><img src="images/Art/2DItems/Gems/New/GhostDanceSkillGem.webp">Ghost Dance</span> — ชั้นป้องกันที่ดีมาก: โดนตีแล้วกิน ghost shroud คืน ES = 2% ของ evasion rating ต่อวินาที · เรามี evasion ~20,000 → คืน ES ~400/วินาที · เสริม Cooldown Recovery II (ได้ ghost shroud บ่อยขึ้น)</li>
+  </ul>
+</div>
+
+<!-- ====================== TREE ====================== -->
+<h2 class="section"><span class="ic">🌳</span> การเปลี่ยนผัง (Major Tree Changes)</h2>
+<div class="card">
+  <h3>Ascendancy</h3>
+  <p>เหมือนเดิม: Primal Bounty → Matcha's Gift, Stampede → Wild Protector, แล้วได้ <strong>Sacred Unity</strong> ฟรี (อย่าลืม allocate)</p>
+</div>
+<div class="card">
+  <h3>Passive Tree — แนวคิด: Weapon Set 1 = attack speed, Weapon Set 2 = damage</h3>
+  <ul>
+    <li><strong>Weapon Set 2:</strong> Stand and Deliver (crit damage + projectile damage ภายใน 2 เมตร → พยายามยืนใกล้บอส ≤2m), Killer Instinct (+40% attack damage เพราะ hybrid/ES = เลือดเต็มตลอด), Critical Exploit (crit chance เยอะ — จำเป็นเพราะไม่ใช้ Pinpoint Critical)</li>
+    <li><strong>Weapon Set 1:</strong> Precision Salvo, Stimulants (attack speed ขณะมี flask), Acceleration (skill speed), Dance with Death (มือซ้ายว่าง → skill speed → Whirling Slash ตีถี่ขึ้น), 10fold Attacks (attack speed)</li>
+    <li><strong>Crit cluster:</strong> Struck Through, Heartstopping, Heartbreaking, Stupefy, Dizzying Hits, True Strike, For the Jugular, Deadly Force — รวม ๆ คือ crit chance/crit damage เยอะ</li>
+    <li><strong>Frenzy:</strong> ถอด Hail ใส่ <strong>Frenetic</strong> (+1 max frenzy charge → Barrage repeat เพิ่ม + ยิงกระสุนเยอะขึ้น)</li>
+    <li><strong>Defense/utility:</strong> Subterfuge Mask (+1 evasion ต่อ ES บนหมวก), Harness the Elements (+20% damage ต่อธาตุที่ศัตรูมี — เรามีครบ 3 = +60%), Mindful Awareness (evasion + ES), Spectral Ward (1 max ES ต่อ 12 item evasion → ทดแทน ES ของ Forgotten Warden ที่ถอดไป แต่ได้ evade/deflect สูงขึ้นมาก)</li>
+  </ul>
+</div>
+
+<!-- ====================== JEWELS ====================== -->
+<h2 class="section"><span class="ic">🔷</span> Jewels</h2>
+<div class="card">
+  <ul>
+    <li><strong class="k">Controlled Metamorphosis</strong> (medium large ring) — allocate จุดระหว่างวงกลมน้ำเงิน 2 จุด: Kit Runner (projectile speed + damage), Distracted Target (crit chance ใส่ศัตรูที่ blinded), Chakra of Thought (attack speed ขณะ mana ไม่ต่ำ)</li>
+    <li><strong class="k">Time-Lost Emerald</strong> — เน้น crit chance/crit damage บน notable + projectile speed (มี notable socket เยอะในนี้) · projectile speed แปลงเป็นดาเมจเพราะมี Projectile Acceleration III บน Twister</li>
+    <li><span class="chip"><img src="images/Art/2DItems/Jewels/Uniques/ApostatesHeart.webp">Heart of the Well</span> ตัวใหม่ — extra damage as Cold & Lightning (lightning ช่วยรักษา lightning resonance กับ Trinity)</li>
+    <li>ถอด Chaos Inoculation/<span class="chip"><img src="images/Art/2DItems/Jewels/RitualJewel.webp">From Nothing</span> ออก ซื้อ <strong>Crimson Assault I</strong> กลับมา (เลิกสาย freeze แล้ว) — ดาเมจเยอะกว่ามาก</li>
+    <li><strong>Frenzied Bear</strong> (skill speed + damage เมื่อเพิ่งกิน frenzy charge — เกิดตลอดทั้งแมพ/บอส), +10 strength</li>
+    <li><strong>Careful Consideration</strong> (+100% evasion rating ถ้าไม่โดนตีเร็ว ๆ นี้ → ป้องกันแน่นขึ้นมาก)</li>
+    <li><strong>Multitasking</strong> (+skill effect duration → Twister อยู่นานขึ้น, multi-hit เยอะขึ้น, เคลียร์ดีขึ้น)</li>
+  </ul>
+</div>
+
+<!-- ====================== OUTRO ====================== -->
+<h2 class="section"><span class="ic">👋</span> ปิดท้าย (Outro)</h2>
+<p>จบแล้วครับสำหรับคลิปไกด์บิลด์นี้ หวังว่าทุกคนจะชอบ ถ้าชอบฝากกด Like + Subscribe ช่วยช่องด้วยนะครับ
+ตอนนี้มีไลฟ์สดทั้ง YouTube และ Twitch (ลิงก์ใน description/คอมเมนต์) ขอให้ทุกคนมีวัน/คืนที่ดี แล้วเจอกันคลิปหน้าครับ</p>
+
+</div><!-- /tab-video -->
+
+<!-- ====================== TAB: MOBALYTICS ====================== -->
+<div class="tab-panel" id="tab-moba">
+
+<div class="card">
+  <h3>📋 SiahZ's Spirit Walker Twister — League Starter</h3>
+  <p><span class="en">คลาส:</span> <strong class="k">Huntress</strong> → ascendancy <strong class="k">Spirit Walker</strong>
+  · สกิลหลัก <span class="chip"><img src="images/Art/2DItems/Gems/New/TwisterSkillGem.webp">Twister</span>
+  · เวอร์ชัน <strong class="k">0.5 RotA</strong> · ประเภท League Starter (มีทั้งสาย leveling และ endgame)</p>
+  <p class="en">โดย SiahZ · อัปเดต 14 มิ.ย. 2026 · 814 favorites · (เป็นบิลด์เดียวกับคลิปในแท็บแรก — แท็บนี้คือหน้าวางแผนบนเว็บ Mobalytics)</p>
+  <p class="meta-links">
+    <a href="https://www.twitch.tv/siahz_" target="_blank">Twitch</a>
+    <a href="https://www.youtube.com/@SiahZ" target="_blank">YouTube</a>
+    <a href="https://discord.gg/b3CragBrbw" target="_blank">Discord</a>
+    <a href="https://mobalytics.gg/poe-2/profile/siahz/builds/siahz-s-spirit-walker-twister" target="_blank">หน้าบิลด์ต้นฉบับ</a>
+  </p>
+</div>
+
+<div class="imp">
+  <span class="lbl">⭐ จุดสำคัญ — ค่าสเตตัสขั้นต่ำสำหรับ Support Gems</span>
+  <p style="margin:0">ต้องมี <mark>Str 45</mark> · <mark>Dex 70</mark> · <mark>Int 90</mark> ถึงจะใส่ support gem ได้ครบ (จัด attribute บน gear/ผังให้ถึงก่อน)</p>
+</div>
+
+<h2 class="section"><span class="ic">🎯</span> เวอร์ชันของบิลด์ (Build Variants)</h2>
+<p>ในหน้าต้นฉบับเลือกดูได้หลายเวอร์ชันตามระยะการเล่น:</p>
+<ul>
+  <li><strong class="k">16M DPS Crit</strong> — endgame เต็มสูบ (ตรงกับคลิปในแท็บแรก)</li>
+  <li><strong class="k">12M DPS Crit</strong> — endgame งบกลาง ๆ</li>
+  <li><strong class="k">Endgame Crit Version</strong> / <strong class="k">Early Crit Version</strong> — ช่วงเข้าสู่ endgame</li>
+  <li><strong class="k">Act 1–4 + Interludes</strong> — สายเลเวลลิ่งระหว่างเล่นเนื้อเรื่อง</li>
+</ul>
+
+<h2 class="section"><span class="ic">💎</span> Skill Gems + เลเวลที่ใช้</h2>
+<p class="en">สีของ Set: <span class="set1">Set 1 = ชุดอาวุธ 1 (เน้น attack speed)</span> · <span class="set2">Set 2 = ชุดอาวุธ 2 (เน้นดาเมจ)</span></p>
+<table>
+  <thead><tr><th>#</th><th>Gem</th><th>Lv</th><th>Set</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><div class="gi"><img src="images/Art/2DItems/Gems/New/WhirlingSlashSkillGem.webp">Whirling Slash <span class="en">ฟันเรียกพายุ</span></div></td><td class="lv">1</td><td class="set1">Set 1</td></tr>
+    <tr><td>2</td><td><div class="gi"><img src="images/Art/2DItems/Gems/New/TwisterSkillGem.webp">Twister <span class="en">เกลียวพายุ</span></div></td><td class="lv">19</td><td class="set2">Set 2</td></tr>
+    <tr><td>3</td><td><div class="gi"><img src="images/Art/2DItems/Gems/New/RangerShearingBoltsSkillGem.webp">Ice-Tipped Arrows <span class="en">ศรปลายน้ำแข็ง</span></div></td><td class="lv">19</td><td class="set2">Set 2</td></tr>
+    <tr><td>4</td><td><div class="gi">Primal Bounty <span class="en">พรเก่าแก่</span></div></td><td class="lv">20</td><td>—</td></tr>
+    <tr><td>5</td><td><div class="gi">Wild Protector <span class="en">ผู้พิทักษ์เกรี้ยวกราด</span></div></td><td class="lv">20</td><td>—</td></tr>
+    <tr><td>6</td><td><div class="gi">Vivid Stampede <span class="en">สดใสอลหม่าน</span></div></td><td class="lv">20</td><td>—</td></tr>
+    <tr><td>7</td><td><div class="gi">Purity of Fire <span class="en">ไฟพิสุทธิ์</span></div></td><td class="lv">19</td><td>—</td></tr>
+    <tr><td>8</td><td><div class="gi"><img src="images/Art/2DItems/Gems/New/WindDancerSkillGem.webp">Wind Dancer <span class="en">ลมร่ายรำ</span></div></td><td class="lv">10</td><td>—</td></tr>
+    <tr><td>9</td><td><div class="gi"><img src="images/Art/2DItems/Gems/New/HuntressTrinitySkillGem.webp">Trinity <span class="en">พลังไตรธาตุ</span></div></td><td class="lv">19</td><td>—</td></tr>
+    <tr><td>10</td><td><div class="gi"><img src="images/Art/2DItems/Gems/New/GhostDanceSkillGem.webp">Ghost Dance <span class="en">ระบำวิญญาณ</span></div></td><td class="lv">18</td><td>—</td></tr>
+    <tr><td>11</td><td><div class="gi"><img src="images/Art/2DItems/Gems/New/ElementalWeaknessSkillGem.webp">Elemental Weakness <span class="en">แพ้ธาตุ</span></div></td><td class="lv">18</td><td>—</td></tr>
+    <tr><td>12</td><td><div class="gi"><img src="images/Art/2DItems/Gems/New/SnipersMarkSkillGem.webp">Sniper's Mark <span class="en">คำแช่งนักซุ่มยิง</span></div></td><td class="lv">19</td><td>—</td></tr>
+    <tr><td>13</td><td><div class="gi"><img src="images/Art/2DItems/Gems/New/RangerCombatFrenzySkillGem.webp">Combat Frenzy <span class="en">รบราบ้าระห่ำ</span></div></td><td class="lv">16</td><td>—</td></tr>
+    <tr><td>14</td><td><div class="gi"><img src="images/Art/2DItems/Gems/New/RangerBarrageSkillGem.webp">Barrage <span class="en">ระดมยิง</span></div></td><td class="lv">18</td><td>—</td></tr>
+  </tbody>
+</table>
+
+<div class="imp">
+  <span class="lbl">⭐ จุดสำคัญ — ลำดับการกดสกิล (Skill Rotation)</span>
+  <p style="margin:0 0 6px"><strong class="k">เคลียร์แมพ (AOE):</strong>
+    <mark>Ice-Tipped Arrows → Whirling Slash → Twister</mark></p>
+  <p style="margin:0"><strong class="k">ตีบอส (Bossing):</strong>
+    <mark>Whirling Slash → Dodge Roll → Ice-Tipped Arrows → Freezing Mark → Barrage → Twister</mark></p>
+</div>
+
+<h2 class="section"><span class="ic">📜</span> Quest Rewards — เลือกรางวัลเควสต์ตามนี้</h2>
+<p class="lead">เลือกรางวัลให้ตรงเพื่อตันต้านทาน + ได้ Spirit/Life ที่บิลด์ต้องการ</p>
+<table>
+  <thead><tr><th>Act</th><th>เควสต์ / โซน</th><th>รางวัลที่เลือก</th></tr></thead>
+  <tbody>
+    <tr><td rowspan="3">Act 1</td><td>Clearfell — Beira</td><td><mark>+10% Cold Res</mark></td></tr>
+    <tr><td>Freythorn — The King in the Mists</td><td><mark>+30 Spirit</mark></td></tr>
+    <tr><td>Ogham Manor — Candlemass</td><td>+20 max Life</td></tr>
+    <tr><td rowspan="2">Act 2</td><td>Spires of Deshar — Sisters of Garukhan</td><td><mark>+10% Lightning Res</mark></td></tr>
+    <tr><td>Valley of the Titans — Medallion</td><td>+30% Charm Charges + 1 Charm Slot</td></tr>
+    <tr><td rowspan="3">Act 3</td><td>Azak Bog — Ignagduk</td><td><mark>+30 Spirit</mark></td></tr>
+    <tr><td>Jiquani's Machinarium — Blackjaw</td><td><mark>+10% Fire Res</mark></td></tr>
+    <tr><td>Venom Crypts — Venom Draught</td><td>+25% Stun Threshold</td></tr>
+    <tr><td rowspan="4">Act 4</td><td>Abandoned Prison — Goddess of Justice</td><td>มี 2 ตัวเลือก (ไม่ระบุ)</td></tr>
+    <tr><td>Eye of Hinekora — Navali's Rest</td><td>+5% max Mana</td></tr>
+    <tr><td>Halls of the Dead — Tasalio/Tawhoa/Ngamahu Tests</td><td><mark>+5% Fire / Cold / Lightning Res</mark> (อย่างละจุด)</td></tr>
+    <tr><td>—</td><td>—</td></tr>
+    <tr><td rowspan="3">Interlude</td><td>Khari Crossing — Molten Shrine</td><td>+5% max Life</td></tr>
+    <tr><td>Qimah — Tabana's Pillar</td><td><mark>+5% all Elemental Res</mark></td></tr>
+    <tr><td>Kriar Village — Lythara</td><td><mark>+40 Spirit</mark></td></tr>
+  </tbody>
+</table>
+
+<div class="note">
+  <strong>หมายเหตุ:</strong> ส่วน <strong class="k">Equipment</strong> และ <strong class="k">Passive Tree</strong> ในหน้าต้นฉบับเป็น widget แบบโต้ตอบ (ลาก-วาง / planner ฝัง) ดึงเป็นข้อความตรง ๆ ไม่ได้ทั้งหมด —
+  รายละเอียด gear / gem links / passive ฉบับ endgame ดูได้ครบใน <strong>แท็บ "แปลจากคลิป"</strong> หรือกดเข้า
+  <a href="https://mobalytics.gg/poe-2/profile/siahz/builds/siahz-s-spirit-walker-twister" target="_blank">หน้าบิลด์ต้นฉบับ</a> เพื่อใช้ planner โต้ตอบ
+</div>
+
+</div><!-- /tab-moba -->
+
+<footer>
+  ถอดข้อความ + แปลไทยจากคลิปบิลด์ของ Sides · รูปไอคอนจากฐานข้อมูล <code>poe2db</code> (โฟลเดอร์ <code>images/</code> ในโปรเจกต์นี้)<br>
+  ชื่อไทยของสกิลดึงจากหน้า <code>/th/</code> ของ poe2db.tw
+</footer>
+
+</div>
+<script>
+  document.querySelectorAll("nav.tabs button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const tab = btn.dataset.tab;
+      document.querySelectorAll("nav.tabs button").forEach((b) => b.classList.toggle("active", b === btn));
+      document.querySelectorAll(".tab-panel").forEach((p) => p.classList.toggle("active", p.id === "tab-" + tab));
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+</script>
+</body>
+</html>

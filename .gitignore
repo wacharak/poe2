@@ -1,0 +1,16 @@
+# secrets
+.env
+
+# dependencies
+node_modules/
+
+# regenerable scraped data (run the scrapers / images.js to rebuild)
+images/
+
+# raw HTML cache + scratch debug files
+scratch/
+
+# logs / OS
+*.log
+.DS_Store
+Thumbs.db

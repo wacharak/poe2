@@ -1,0 +1,19 @@
+{
+  "name": "poe2db-scraper",
+  "version": "0.1.0",
+  "description": "Scrape Path of Exile 2 data from poe2db.tw into a local MySQL database",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "schema": "node src/db/apply-schema.js",
+    "recon": "node scripts/recon.js",
+    "scrape:bases": "node src/scrape/bases.js",
+    "scrape:uniques": "node src/scrape/uniques.js",
+    "scrape:gems": "node src/scrape/gems.js",
+    "scrape:all": "node src/scrape/all.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "mysql2": "^3.11.0"
+  }
+}
