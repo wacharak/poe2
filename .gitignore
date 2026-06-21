@@ -14,3 +14,6 @@ scratch/
 *.log
 .DS_Store
 Thumbs.db
+
+# personal scratch screenshots (weapon comparisons)
+merge/
