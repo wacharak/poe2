@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PoE2 คราฟสร้อย +4/+5/+6 All Skills + Spirit + ES (แปลไทย)</title>
+<style>
+  :root{--bg:#0e0d0b;--panel:#17150f;--panel2:#1f1c14;--line:#3a3422;--gold:#c9a44a;--gold2:#e8c970;
+    --text:#e8e1cf;--muted:#a99f86;--blue:#7aa7d6;--green:#86c06a;--red:#d2695f}
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#0b0a08,#13110c);color:var(--text);
+    font-family:"Segoe UI",Tahoma,system-ui,sans-serif;line-height:1.75;font-size:16px}
+  .wrap{max-width:960px;margin:0 auto;padding:28px 20px 80px}
+  header.hero{text-align:center;padding:26px 18px;border:1px solid var(--line);border-radius:14px;
+    background:radial-gradient(120% 140% at 50% 0%,#241f14,#100e09);margin-bottom:26px}
+  header.hero h1{margin:0 0 6px;font-size:26px;color:var(--gold2)}
+  header.hero .sub{color:var(--muted);font-size:15px}
+  .tag{display:inline-block;margin:10px 6px 0;padding:4px 12px;border:1px solid var(--line);
+    border-radius:999px;font-size:13px;color:var(--gold);background:#1c1910}
+  h2.section{display:flex;align-items:center;gap:10px;margin:38px 0 14px;padding-bottom:8px;
+    border-bottom:2px solid var(--line);color:var(--gold2);font-size:21px}
+  h3.sub{color:var(--gold);font-size:17px;margin:22px 0 8px}
+  p{margin:0 0 13px} .lead{color:var(--muted);font-style:italic;margin-bottom:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+  .card h3{margin:0 0 10px;color:var(--gold);font-size:17px}
+  strong.k{color:var(--gold2)} .en{color:var(--muted);font-size:13.5px}
+  ul,ol{margin:6px 0;padding-left:24px} li{margin:6px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:12px 0}
+  .skill{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;
+    background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 8px}
+  .skill img{width:46px;height:46px;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
+  .skill .nth{font-weight:600;font-size:13.5px} .skill .nen{font-size:11.5px;color:var(--muted)}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:#211d13;border:1px solid var(--line);
+    border-radius:8px;padding:2px 9px 2px 4px;margin:2px;vertical-align:middle;font-size:14px;white-space:nowrap}
+  .chip img{width:22px;height:22px;object-fit:contain}
+  .chip.code{color:var(--gold2);font-weight:600}
+  .note{font-size:13.5px;color:var(--muted);border-left:3px solid var(--gold);padding:6px 0 6px 12px;margin:10px 0;background:#15130d}
+  .imp{border-left:4px solid var(--gold2);background:linear-gradient(90deg,#2a2310,#17150f);
+    padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0}
+  .imp .lbl{display:inline-block;font-size:11.5px;letter-spacing:1px;text-transform:uppercase;
+    color:var(--gold2);font-weight:700;margin-bottom:4px}
+  .warn{border-left:4px solid var(--red);background:linear-gradient(90deg,#2a1410,#17120f)}
+  .warn .lbl{color:var(--red)}
+  mark{background:#4a3a12;color:var(--gold2);padding:0 4px;border-radius:3px;font-weight:600}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#221d12;color:var(--gold);font-size:13px} tr:nth-child(even) td{background:#15130d}
+  td .gi{display:flex;align-items:center;gap:8px} td .gi img{width:30px;height:30px;object-fit:contain;flex:none}
+  .copy{font-family:Consolas,monospace;background:#221d12;border:1px solid var(--line);border-radius:5px;
+    padding:1px 7px;color:var(--gold2);font-size:13.5px}
+  .step{counter-reset:none}
+  .step .card{position:relative;padding-left:54px}
+  .step .card .num{position:absolute;left:14px;top:14px;width:28px;height:28px;border-radius:50%;
+    background:linear-gradient(180deg,var(--gold2),var(--gold));color:#161208;font-weight:800;
+    display:flex;align-items:center;justify-content:center;font-size:15px}
+  a{color:var(--blue)}
+  footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:18px}
+  nav.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+  nav.tabs button{flex:1 1 180px;cursor:pointer;font:inherit;font-size:14.5px;font-weight:600;color:var(--muted);
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 12px;transition:.15s}
+  nav.tabs button:hover{color:var(--text);border-color:var(--gold)}
+  nav.tabs button.active{color:#161208;background:linear-gradient(180deg,var(--gold2),var(--gold));border-color:var(--gold2)}
+  .tab-panel{display:none} .tab-panel.active{display:block}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>🧵 คราฟสร้อย (Amulet) +4 / +5 / +6 to Level of all Skills</h1>
+    <div class="sub">+ Spirit + Energy Shield · สรุป &amp; เรียบเรียงจากคลิปสอนคราฟ (PoE2 0.5)</div>
+    <div>
+      <span class="tag">+Level all Skills</span>
+      <span class="tag">+Spirit</span>
+      <span class="tag">Energy Shield</span>
+      <span class="tag">Fracture + Desecrate</span>
+    </div>
+  </header>
+
+  <p class="lead">หมายเหตุ: นี่คือการ "เรียบเรียงใหม่" จากคลิป (เสียงพิมพ์อัตโนมัติเพี้ยนเยอะ) — ผมแปลงศัพท์เพี้ยนเป็นชื่อจริงที่ค้นใน poe2db ได้ พร้อมไอคอน orb จากฐานข้อมูล และเสริมคำอธิบาย/เตือนตรงจุดที่คลิปพูดไม่ชัด · <a href="https://www.youtube.com/watch?v=F5yhCgmNH9A" target="_blank">▶ คลิปต้นฉบับ</a></p>
+
+  <nav class="tabs">
+    <button class="active" data-tab="a">📖 ภาพรวม + ของที่ใช้</button>
+    <button data-tab="b">🔨 สูตรหลัก (ทีละขั้น)</button>
+    <button data-tab="c">⬆️ ดัน +5 / +6</button>
+    <button data-tab="d">🧩 แบบอื่น + ลดขั้นตอน</button>
+  </nav>
+
+  <!-- ================= TAB A ================= -->
+  <div class="tab-panel active" id="tab-a">
+
+    <h2 class="section">🎯 เราจะทำสร้อยอะไร</h2>
+    <p>เป้าหมายคือสร้อย rare ที่ <strong class="k">การันตี 4 บรรทัดสำคัญ</strong> ได้แน่นอน ส่วนอีก 2 บรรทัดเป็น "ของแถม" (กันธาตุ / คริ / Cast Speed) ที่บังคับทิศทางด้วย Catalyst ได้แต่ไม่ 100%:</p>
+    <ol>
+      <li><strong class="k">+X to Level of all (…) Skills</strong> <span class="en">— ตัวเอก ดันได้ถึง +6 (สายไหนก็ได้: Spell / Attack / Projectile / Minion ฯลฯ หลักการเดียวกัน)</span></li>
+      <li><strong class="k">+ Spirit</strong> <span class="en">— ค่า Spirit ไว้จองออร่า/บัฟ (tier 1 = 50)</span></li>
+      <li><strong class="k">increased Energy Shield</strong> <span class="en">— %ES รวม (คลิปเรียก "global")</span></li>
+      <li><strong class="k">increased Energy Shield from Equipped Body Armour</strong> <span class="en">— มอดพิเศษจาก Desecration (ดู Well of Souls) — เพิ่ม ES เฉพาะก้อนที่มาจากเสื้อเกราะ</span></li>
+    </ol>
+
+    <div class="imp"><span class="lbl">⭐ หัวใจของวิธีนี้</span>
+      <p style="margin:0">มอด <mark>+Level all Skills</mark> หาได้สูงสุดแค่ <strong class="k">+3</strong> ตามปกติ → เรา <strong class="k">"Fracture" (ล็อกถาวร) บรรทัด +3 นี้ไว้</strong> ก่อน แล้วค่อยคราฟบรรทัดอื่นรอบ ๆ มันโดยไม่ทำมันหลุด · จากนั้นดันเลขให้ทะลุ +3 ด้วย <strong class="k">Catalyst (quality)</strong> → +4 และ <strong class="k">การ Corrupt</strong> → +5 / +6</p></div>
+
+    <h2 class="section">🔤 ศัพท์เพี้ยนในคลิป → ชื่อจริง</h2>
+    <p class="lead">คลิปใช้เสียงพากย์ + ซับเพี้ยน ตารางนี้ช่วยถอดรหัสให้ค้นต่อใน poe2db ได้</p>
+    <table>
+      <thead><tr><th>คลิปพูดว่า</th><th>ชื่อจริง (ค้น poe2db ด้วยคำนี้)</th><th>คืออะไร</th></tr></thead>
+      <tbody>
+        <tr><td>"กระดูกไก่"</td><td><span class="copy">Jawbone</span> / Desecration</td><td>ของสาย Desecrate ใช้ที่ <strong class="k">Well of Souls</strong> — เติม mod แบบ "คว่ำหน้า" (ยังไม่เห็นว่าได้อะไร)</td></tr>
+        <tr><td>"หน้าขาว", "anum", "อนัม"</td><td><span class="copy">Orb of Annulment</span></td><td>ลบ mod แบบสุ่ม 1 ตัว (ลบบรรทัดที่ Fracture ไม่ได้)</td></tr>
+        <tr><td>"เคออส", "เคos"</td><td><span class="copy">Chaos Orb</span></td><td>ลบ mod สุ่ม 1 + เติมใหม่สุ่ม 1 = ใช้ "หมุน" หา mod</td></tr>
+        <tr><td>"device off", "ดีไวน์"</td><td><span class="copy">Divine Orb</span></td><td>สุ่มค่าตัวเลขในวงเล็บใหม่ (ดันเลขให้สุด)</td></tr>
+        <tr><td>"Facturing", "แฟคเจอร์"</td><td><span class="copy">Fracturing Orb</span></td><td>ล็อก (Fracture) mod สุ่ม 1 ตัวถาวร — กลายเป็นสีเหลือง ลบไม่ได้</td></tr>
+        <tr><td>"the beast / breach / Beach"</td><td><span class="copy">Essence</span> (Greater / Perfect)</td><td>การันตีให้ขึ้น mod ชนิดที่ต้องการ — <em>ชื่อเฉพาะฟังไม่ชัด ดูหมายเหตุด้านล่าง</em></td></tr>
+        <tr><td>"Catalyst River / Cast"</td><td><span class="copy">Catalyst</span></td><td>เพิ่ม quality ของสร้อย/แหวน → ขยายค่ามอดบางกลุ่ม (Attack / Caster / Defence)</td></tr>
+        <tr><td>"Hincola / ฮิเนโครา"</td><td><span class="copy">Hinekora's Lock</span></td><td>"ดูดวงล่วงหน้า" — เห็นผลของ currency ตัวถัดไปก่อนกดจริง</td></tr>
+        <tr><td>"Well of Soul", "Echo"</td><td><span class="copy">Well of Souls</span> (Desecration)</td><td>แท่นเปิด/เลือก mod ที่ Desecrate (กระดูก) ใส่ไว้แบบคว่ำหน้า</td></tr>
+        <tr><td>"Omen only Prefix / Suffix"</td><td><span class="copy">Omen of Sinistral / Dextral …</span></td><td>Omen คุมให้ currency ทำเฉพาะ <strong class="k">prefix (Sinistral)</strong> หรือ <strong class="k">suffix (Dextral)</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section">🗂️ Currency / Orb หลักที่ใช้ (ไอคอนจาก poe2db)</h2>
+    <div class="grid">
+      <div class="skill"><img src="images/Art/2DItems/Currency/FracturingOrb.webp" alt=""><span class="nth">ล็อก mod ถาวร</span><span class="nen">Fracturing Orb</span></div>
+      <div class="skill"><img src="images/Art/2DItems/Currency/AnnullOrb.webp" alt=""><span class="nth">ลบ mod สุ่ม</span><span class="nen">Orb of Annulment</span></div>
+      <div class="skill"><img src="images/Art/2DItems/Currency/CurrencyRerollRare.webp" alt=""><span class="nth">หมุน mod</span><span class="nen">Chaos Orb</span></div>
+      <div class="skill"><img src="images/Art/2DItems/Currency/CurrencyAddModToRare.webp" alt=""><span class="nth">เติม mod</span><span class="nen">Exalted Orb</span></div>
+      <div class="skill"><img src="images/Art/2DItems/Currency/CurrencyAddModToRare.webp" alt=""><span class="nth">เติม mod (tier สูง)</span><span class="nen">Perfect Exalted Orb</span></div>
+      <div class="skill"><img src="images/Art/2DItems/Currency/CurrencyUpgradeMagicToRare.webp" alt=""><span class="nth">magic→rare</span><span class="nen">Regal Orb</span></div>
+      <div class="skill"><img src="images/Art/2DItems/Currency/CurrencyModValues.webp" alt=""><span class="nth">สุ่มค่าตัวเลข</span><span class="nen">Divine Orb</span></div>
+      <div class="skill"><img src="images/Art/2DItems/Currency/CurrencyVaal.webp" alt=""><span class="nth">Corrupt</span><span class="nen">Vaal Orb</span></div>
+      <div class="skill"><img src="images/Art/2DItems/Currency/HinekorasLock.webp" alt=""><span class="nth">พรีวิวผล</span><span class="nen">Hinekora's Lock</span></div>
+      <div class="skill"><img src="images/Art/2DItems/Currency/CurrencyUpgradeToMagic.webp" alt=""><span class="nth">ขึ้น magic</span><span class="nen">Orb of Transmutation</span></div>
+    </div>
+
+    <div class="note"><strong>หมายเหตุเรื่อง Essence / Omen / Catalyst:</strong> ของพวกนี้ยัง "ไม่มี" ในฐานข้อมูล poe2db เครื่องนี้ (เก็บมาแค่ gem / unique / base / orb) จึงไม่มีไอคอน — ผมจึงให้ <strong class="k">ชื่ออังกฤษให้ก๊อปไปค้นเอง</strong> ที่ <a href="https://poe2db.tw/us/Omen" target="_blank">poe2db.tw/us/Omen</a>, <a href="https://poe2db.tw/us/Essence" target="_blank">/Essence</a>, <a href="https://poe2db.tw/us/Catalyst" target="_blank">/Catalyst</a></p></div>
+
+    <h2 class="section">🛒 ของที่ต้องเตรียม (Shopping list)</h2>
+    <ul>
+      <li>สร้อยเป้าหมาย: base ที่มี <strong class="k">+3 to Level of all (…) Skills</strong> และ <strong class="k">ยังไม่ Corrupt</strong> — เลือกที่มี <strong>3–4 mod</strong> เท่านั้น (ถ้า 5–6 mod คราฟต่อยาก/แตกง่าย)</li>
+      <li><span class="chip"><img src="images/Art/2DItems/Currency/FracturingOrb.webp">Fracturing Orb</span> <span class="chip"><img src="images/Art/2DItems/Currency/AnnullOrb.webp">Orb of Annulment</span> <span class="chip"><img src="images/Art/2DItems/Currency/CurrencyRerollRare.webp">Chaos Orb</span> <span class="chip"><img src="images/Art/2DItems/Currency/CurrencyModValues.webp">Divine Orb</span></li>
+      <li><span class="chip"><img src="images/Art/2DItems/Currency/CurrencyAddModToRare.webp">Exalted / Perfect Exalted Orb</span></li>
+      <li><span class="copy">Essence</span> (สาย Energy Shield + ตัวที่การันตี prefix) · <span class="copy">Catalyst</span> (สาย Attack หรือ Caster + สาย Defence) · <span class="copy">Omen of Sinistral / Dextral …</span> หลายชนิด</li>
+      <li>(เฉพาะ +6) <span class="chip"><img src="images/Art/2DItems/Currency/CurrencyVaal.webp">Vaal Orb</span> <span class="chip"><img src="images/Art/2DItems/Currency/HinekorasLock.webp">Hinekora's Lock</span></li>
+    </ul>
+  </div><!-- /tab-a -->
+
+  <!-- ================= TAB B ================= -->
+  <div class="tab-panel" id="tab-b">
+    <h2 class="section">🔨 สูตรหลัก: +4 All Skills + Spirit + 2× Energy Shield</h2>
+    <p class="lead">ทำตามลำดับนี้ (ผมเรียงใหม่ให้เป็นเหตุเป็นผลกว่าในคลิป)</p>
+
+    <div class="step">
+
+      <div class="card"><span class="num">1</span>
+        <h3>หาสร้อย +3 skill มา แล้วเตรียมให้เหลือ "3 mod"</h3>
+        <p>ซื้อสร้อย (magic หรือ rare ก็ได้) ที่มี <strong class="k">+3 to Level of all (…) Skills</strong> และ <mark>ยังไม่ Corrupt</mark></p>
+        <ul>
+          <li>ถ้าเป็น <strong>rare</strong> ที่มี mod เกิน → ใช้ <span class="chip"><img src="images/Art/2DItems/Currency/AnnullOrb.webp">Orb of Annulment</span> / <span class="copy">Essence</span> จัดให้เหลือ ~3 mod</li>
+          <li>ถ้าเป็น <strong>magic</strong> → ใช้ <span class="copy">Essence</span> (เลือกเฉพาะ prefix) แล้วเติม Desecrate (กระดูก) ให้ครบ 3 mod</li>
+        </ul>
+        <div class="note">ทำไมต้อง "3 mod"? เพราะตอน Fracture มันสุ่มล็อก 1 ใน mod ที่มี → ถ้ามี 3 mod ก็มีโอกาส <strong class="k">1 ใน 3</strong> ที่จะล็อกโดน +3 skill พอดี (ยิ่ง mod น้อย โอกาสโดนยิ่งสูง)</div>
+      </div>
+
+      <div class="card"><span class="num">2</span>
+        <h3>Fracture ล็อกบรรทัด +3 skill</h3>
+        <p>ใช้ <span class="chip"><img src="images/Art/2DItems/Currency/FracturingOrb.webp">Fracturing Orb</span> ลงไป — มันสุ่มล็อก mod 1 ตัวถาวร (กลายเป็น<strong class="k">สีเหลือง</strong>)</p>
+        <ul>
+          <li>ถ้าล็อก <strong>โดน</strong> +3 skill → ไปต่อข้อ 3</li>
+          <li>ถ้าล็อก <strong>ไม่โดน</strong> → ทิ้ง/ขายคืน แล้วเริ่มใบใหม่ (คลิปบอกตรง ๆ ว่าพลาดก็ทิ้ง)</li>
+        </ul>
+      </div>
+
+      <div class="card"><span class="num">3</span>
+        <h3>ล้างให้เหลือแค่บรรทัด Fracture บรรทัดเดียว</h3>
+        <p>ใช้ <span class="chip"><img src="images/Art/2DItems/Currency/AnnullOrb.webp">Orb of Annulment</span> ลบ mod อื่นออกจนเหลือแค่ +3 skill (สีเหลือง) ตัวเดียว · บรรทัด Fracture <strong class="k">จะไม่ถูกลบ</strong> เพราะถูกล็อกไว้แล้ว</p>
+      </div>
+
+      <div class="card"><span class="num">4</span>
+        <h3>หมุนหา Spirit</h3>
+        <p>ใช้ <span class="chip"><img src="images/Art/2DItems/Currency/CurrencyRerollRare.webp">Chaos Orb</span> "หมุน" ไปเรื่อย ๆ จนได้บรรทัด <strong class="k">+Spirit</strong> ที่พอใจ</p>
+        <ul>
+          <li>Spirit tier 1 = <strong>50</strong> · ถ้าหมุนได้ ~47–48 ก็คือ tier 1 แล้ว → ใช้ <span class="chip"><img src="images/Art/2DItems/Currency/CurrencyModValues.webp">Divine Orb</span> ดันเลขให้เป็น 50</li>
+        </ul>
+        <div class="note">เคล็ดลับดูง่าย: เปิดช่องค้นหา/พิมพ์ "Spirit" ในกระเป๋า — ถ้าหมุนติด ของจะเรืองแสง</div>
+      </div>
+
+      <div class="card"><span class="num">5</span>
+        <h3>ดัน +3 → +4 ด้วย Catalyst (quality)</h3>
+        <p>ใส่ <span class="copy">Catalyst</span> ที่ตรงกับสายสกิล: <strong class="k">สาย Attack</strong> ใช้ catalyst ฝั่ง Attack, <strong class="k">สาย Spell</strong> ใช้ฝั่ง Caster — ใส่ quality ขึ้นไปแค่ <strong>~34–40%</strong> ก็พอให้ <mark>+3 กลายเป็น +4</mark></p>
+        <div class="note">หลักการ: quality บนสร้อยจะ "ขยาย" ค่ามอดบางกลุ่ม — quality สาย Attack ขยาย "+level to <em>attack</em> skills" ทำให้เลขที่โชว์ขยับจาก +3 เป็น +4</div>
+      </div>
+
+      <div class="card"><span class="num">6</span>
+        <h3>เติมบรรทัด Energy Shield 2 ตัว</h3>
+        <p><strong>วิธี A — ทุนน้อย/ง่าย (คลิปแนะนำเอง):</strong> ทำให้ 2 บรรทัดที่เหลือเป็น <strong class="k">increased Energy Shield (%)</strong> + <strong class="k">maximum Energy Shield (flat)</strong> ธรรมดา</p>
+        <ul>
+          <li>คุมด้วย <span class="copy">Omen of Sinistral Exaltation</span> (เติมเฉพาะ prefix) + <span class="copy">Omen of Catalysing Exaltation</span> แล้วสแลม <span class="chip"><img src="images/Art/2DItems/Currency/CurrencyAddModToRare.webp">Perfect Exalted Orb</span> → ลุ้น %ES หรือ flat ES</li>
+          <li>ถ้าเลขออกมาต่ำ → <span class="chip"><img src="images/Art/2DItems/Currency/CurrencyModValues.webp">Divine Orb</span> ดันให้สูง</li>
+        </ul>
+        <p style="margin-top:14px"><strong>วิธี B — แบบในคลิป (แพงกว่า):</strong> เอา 1 บรรทัดเป็นมอดพิเศษ <strong class="k">increased Energy Shield from Equipped Body Armour</strong> ซึ่งเป็น <em>desecrated mod</em> → ดูขั้นถัดไป</p>
+      </div>
+
+      <div class="card"><span class="num">7</span>
+        <h3>(วิธี B) Desecrate มอด "ES from Body Armour" ที่ Well of Souls</h3>
+        <ol>
+          <li>ใช้ <span class="copy">Omen of Sinistral …</span> (เฉพาะ prefix) ค้างไว้ แล้วใช้ <span class="copy">Jawbone</span> (กระดูก) เติม mod คว่ำหน้า</li>
+          <li>พกของเปิด (<span class="copy">Abyssal Echo</span> / Echo) ไปที่ <strong class="k">Well of Souls</strong> → คลิกขวาเปิด → เลือก/ลุ้นได้ <strong class="k">Energy Shield from Equipped Body Armour</strong></li>
+          <li>ถ้าไม่ออก → กดออก mod ใหม่ (Chaos/Annul) แล้วทำซ้ำ มีของแพงสาย Omen ช่วยล็อกให้ออกบ่อยขึ้น</li>
+        </ol>
+        <div class="warn"><span class="lbl">⚠ จุดที่คลิปพูดไม่ชัด</span>
+          <p style="margin:0">ชื่อ Omen ที่คลิปพูดว่า "Omen of the Black Blood" ฟังไม่ชัด — มันคือ Omen สาย Desecration ที่บังคับชนิด/ตำแหน่ง mod · เปิดหน้า <a href="https://poe2db.tw/us/Omen" target="_blank">poe2db Omen</a> ดูชื่อจริงก่อนซื้อ (ของแพง อย่าเดา)</p></div>
+      </div>
+
+      <div class="card"><span class="num">8</span>
+        <h3>ปิดงาน 2 บรรทัดที่เหลือ (ของแถม)</h3>
+        <p>เติม <span class="chip"><img src="images/Art/2DItems/Currency/CurrencyAddModToRare.webp">Perfect Exalted Orb</span> โดยคุมด้วย Omen prefix/suffix ตามต้องการ — มักจะเอา <strong class="k">กันธาตุ (Resistance)</strong> / <strong class="k">Crit</strong> / <strong class="k">Cast Speed</strong></p>
+        <div class="note">ถ้าอยาก "ฟิกซ์" 2 บรรทัดล่างนี้ไว้ถาวรด้วย ให้ขึ้นไอเทมจาก base ที่ <strong class="k">Fracture Spirit</strong> มาตั้งแต่แรก (จะได้ Fracture ได้ 2 จุด)</div>
+      </div>
+
+    </div>
+
+    <div class="imp"><span class="lbl">✅ ได้สร้อย +4 แล้ว</span>
+      <p style="margin:0">ถึงตรงนี้ = <mark>+4 All Skills + Spirit 50 + 2× Energy Shield</mark> + ของแถม 2 บรรทัด · ถ้าพอใจหยุดได้เลย แข็งมากแล้ว · อยากดันต่อ +5/+6 ไปแท็บถัดไป (เสี่ยง Corrupt)</p></div>
+  </div><!-- /tab-b -->
+
+  <!-- ================= TAB C ================= -->
+  <div class="tab-panel" id="tab-c">
+    <h2 class="section">⬆️ ดันจาก +4 → +5 → +6</h2>
+
+    <div class="warn"><span class="lbl">⚠ อ่านก่อน — ขั้นนี้เสี่ยง "แตก"</span>
+      <p style="margin:0">การดันเกิน +4 อาศัยการ <strong class="k">Corrupt</strong> ซึ่ง <mark>ลุ้น 50/50 อัปหรือพัง</mark> และ Corrupt แล้วคราฟต่อไม่ได้อีก · ทำกับใบที่ยอมเสียได้เท่านั้น และคลิปแนะนำใช้ <span class="chip"><img src="images/Art/2DItems/Currency/HinekorasLock.webp">Hinekora's Lock</span> เพื่อ "ดูผลก่อน" จะคุ้มกว่า</p></div>
+
+    <h3 class="sub">▸ +5 (โอกาส 50/50)</h3>
+    <p>คลิปบอกว่า: ติ๊ก <span class="copy">Omen of Sanctification</span> ค้างไว้ แล้วใช้ orb ดันบนสร้อย → 50/50 จะได้ <strong class="k">+5</strong> หรือร่วงเป็น <strong class="k">+3</strong></p>
+    <div class="warn"><span class="lbl">⚠ จุดที่ผมเสริม (คลิปคลุมเครือ)</span>
+      <p style="margin:0">ข้อมูลทางการระบุว่า <span class="copy">Omen of Sanctification</span> = "สุ่มค่าทุก mod เป็น 80–120% ด้วย Divine Orb แล้วล็อกห้ามคราฟต่อ" ซึ่ง<strong class="k">ไม่ตรง</strong>กับการดัน +5 ตรง ๆ · กลไกดัน +level ที่ชัวร์กว่า (และคลิปใช้กับ +6) คือ <strong class="k">Corrupt</strong> → ดู +6 ด้านล่าง · <mark>ก่อนทำจริง เปิด poe2db หน้า Omen เช็กกลไกล่าสุดก่อนเสมอ</mark></p></div>
+
+    <h3 class="sub">▸ +6 (วิธีที่ชุมชนต่างชาติใช้)</h3>
+    <ol>
+      <li>เริ่มจาก base ที่ <strong class="k">Fracture Spirit (tier 1)</strong> มาก่อน (ซื้อสำเร็จหรือ Fracture เอง)</li>
+      <li>ใช้ <span class="copy">Perfect Essence</span> + ใส่ <span class="copy">Catalyst</span> จน quality สูง (มี <span class="copy">Catalysing Infuser</span> ช่วยดัน quality เกินเพดานปกติไปถึง ~50%) → ดันให้เป็น <strong class="k">+4/+5</strong></li>
+      <li>หมุนด้วย <span class="chip"><img src="images/Art/2DItems/Currency/CurrencyRerollRare.webp">Chaos Orb</span> จนได้ "+3 แท้" (กด <strong class="k">Ultimate / ดูค่าก่อน quality</strong> เพื่อเช็กว่า mod จริงคือ +3)</li>
+      <li>Corrupt: <span class="chip"><img src="images/Art/2DItems/Currency/CurrencyVaal.webp">Vaal Orb</span> + <span class="copy">Omen</span> (สายลุ้นอัป tier) → 50/50 <strong class="k">+5 → +6</strong> หรือร่วงเป็น <strong class="k">+4 (แตก)</strong></li>
+      <li>ใช้ <span class="chip"><img src="images/Art/2DItems/Currency/HinekorasLock.webp">Hinekora's Lock</span> ค้างไว้ก่อน เพื่อ <strong class="k">เห็นผลลัพธ์ล่วงหน้า</strong> — ถ้าจะแตกก็ไม่ต้องกดยืนยัน (กันเสียของแพง)</li>
+    </ol>
+    <div class="note"><strong>Hinekora's Lock คืออะไร (อธิบายเพิ่ม):</strong> เป็นของหายากที่ "ล็อกชะตา" ของไอเทม 1 ครั้ง — พอเอาเมาส์ไปจ่อ currency ตัวถัดไป มันจะโชว์ผลที่จะเกิดให้ดูก่อน เราจึงเลือกกดเฉพาะตอนผลออกมาดี เหมาะมากกับการ Corrupt ที่พลาดแล้วพังถาวร</div>
+  </div><!-- /tab-c -->
+
+  <!-- ================= TAB D ================= -->
+  <div class="tab-panel" id="tab-d">
+    <h2 class="section">🧩 สร้อยแบบอื่นในคลิป</h2>
+
+    <div class="card">
+      <h3>แบบ B — Spirit 50 + All Spell +4 + Cast Speed + Double ES</h3>
+      <p>เน้นสาย <strong class="k">Spell/Caster</strong> · การันตีได้: <mark>Spirit 50</mark> + <mark>+4 All Spell</mark> · ส่วน Cast Speed กับ Maximum ES ถือว่า "ลุ้น" (บังคับทิศได้แต่ไม่ชัวร์)</p>
+      <ul>
+        <li>ขึ้นจาก magic/rare ที่ <span class="copy">Fracture 50 Spirit</span> → <span class="chip"><img src="images/Art/2DItems/Currency/AnnullOrb.webp">Annul</span> เหลือบรรทัดเดียว → <span class="chip"><img src="images/Art/2DItems/Currency/CurrencyRerollRare.webp">Chaos</span> หมุนหา <strong class="k">+3 All Spell</strong></li>
+        <li>คุม prefix ด้วย Omen + <span class="copy">Essence</span> → หา Cast Speed ด้วย <span class="copy">Catalyst (Caster)</span> → หา <strong class="k">maximum ES / %ES</strong> ด้วย Omen + <span class="chip"><img src="images/Art/2DItems/Currency/CurrencyAddModToRare.webp">Perfect Exalted</span></li>
+        <li>ดัน +4 ด้วย Catalyst สาย Caster เหมือนสูตรหลัก ข้อ 5</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>แบบ C — สร้อย "Absent" (ไม่กิน Spirit) + skill + กันธาตุ + 2 ES</h3>
+      <p>สร้อยตระกูล <strong class="k">Absence/Absent</strong> มี implicit ฟรี แต่ <mark>−1 prefix และ −1 suffix</mark> (ช่องน้อยลง) เหมาะถ้าไม่ต้องการ Spirit</p>
+      <ul>
+        <li>ทำให้เป็น rare(ทอง) → Annul เหลือบรรทัดเดียว → Chaos หมุนหา <strong class="k">+3 skill</strong></li>
+        <li>คุม prefix ด้วย Omen + <span class="copy">Essence (of the Breach)</span> → เติมกันธาตุ (ธาตุไหนก็ได้) ด้วย Catalyst + <span class="chip"><img src="images/Art/2DItems/Currency/CurrencyAddModToRare.webp">Perfect Exalted</span></li>
+        <li>ดัน +4 ด้วย Catalyst → ทำ Double ES (max ES + %ES) ด้วย Omen prefix + Essence/Exalt → ปิดด้วย Desecrate ที่ Well of Souls</li>
+      </ul>
+      <div class="note">เปลี่ยนชนิดธาตุของบรรทัดกันธาตุได้ด้วยของสาย "เปลี่ยนธาตุ" (เช่นใส่ของไฟ → กันไฟ, ของสายฟ้า → กันสายฟ้า) ตามที่อยากได้</div>
+    </div>
+
+    <h2 class="section">✂️ คำแนะนำ "ลดขั้นตอน / ตัดที่ไม่จำเป็น"</h2>
+    <div class="imp"><span class="lbl">💡 ทำให้ง่ายและถูกลง</span>
+      <ul style="margin:6px 0">
+        <li><strong class="k">หยุดที่ +4 ก็พอ</strong> — +4 (จาก Fracture +3 + Catalyst) แข็งและถูกกว่ามาก · +5/+6 ต้อง Corrupt = เสี่ยงพังถาวร ทำเฉพาะตอนรวยจริง</li>
+        <li><strong class="k">เลือก ES วิธี A (ES ธรรมดา 2 บรรทัด)</strong> แทนการไป Desecrate "ES from Body Armour" ที่ Well of Souls — คลิปเองก็บอกว่า "ง่ายกว่า ทุนน้อยกว่า"</li>
+        <li><strong class="k">ขั้น "เลือก prefix" ตอนต้น ข้ามได้</strong> — คนทำคลิปบอกเองว่า "prefix ไม่ค่อยสำคัญ ทำเผื่อเฉย ๆ ถ้าไม่ติดก็ทิ้งอยู่ดี"</li>
+        <li><strong class="k">ใช้ Hinekora's Lock เฉพาะตอน Corrupt +6</strong> เท่านั้น (ของแพง) — ขั้นอื่นไม่ต้องเปลือง</li>
+        <li><strong class="k">ของ rare ให้เลือกที่ 3–4 mod</strong> ตั้งแต่ซื้อ — ลดการ Annul ทิ้งหลายดอก</li>
+      </ul>
+    </div>
+
+    <div class="warn"><span class="lbl">⚠ ข้อควรระวังรวม</span>
+      <ul style="margin:6px 0">
+        <li>สร้อยตั้งต้น <strong class="k">ห้าม Corrupt</strong> เด็ดขาด (ไม่งั้น Fracture/คราฟต่อไม่ได้)</li>
+        <li>ชื่อ <strong class="k">Essence / Omen / Catalyst</strong> บางตัวในคลิปฟังเพี้ยน — เปิด poe2db ยืนยันก่อนซื้อทุกครั้ง (ลิงก์อยู่แท็บแรก)</li>
+      </ul>
+    </div>
+  </div><!-- /tab-d -->
+
+  <footer>เรียบเรียง &amp; แปลไทยจากคลิป <a href="https://www.youtube.com/watch?v=F5yhCgmNH9A" target="_blank">YouTube</a> · ไอคอน orb จากฐานข้อมูล poe2db (โฟลเดอร์ images/) · Omen/Essence/Catalyst ใส่ชื่ออังกฤษให้ค้นต่อเอง</footer>
+</div>
+<script>
+  document.querySelectorAll("nav.tabs button").forEach((btn)=>{btn.addEventListener("click",()=>{
+    const t=btn.dataset.tab;
+    document.querySelectorAll("nav.tabs button").forEach(b=>b.classList.toggle("active",b===btn));
+    document.querySelectorAll(".tab-panel").forEach(p=>p.classList.toggle("active",p.id==="tab-"+t));
+    window.scrollTo({top:0,behavior:"smooth"});});});
+</script>
+</body>
+</html>
