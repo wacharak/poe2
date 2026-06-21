@@ -8,6 +8,7 @@ const counts = await q(`
   SELECT 'gem' e, COUNT(*) n FROM gem
   UNION ALL SELECT 'unique', COUNT(*) FROM unique_item
   UNION ALL SELECT 'base_item', COUNT(*) FROM base_item
+  UNION ALL SELECT 'currency_item', COUNT(*) FROM currency_item
   UNION ALL SELECT 'item_mod', COUNT(*) FROM item_mod
   UNION ALL SELECT 'affix', COUNT(*) FROM affix
   UNION ALL SELECT 'affix_item_class', COUNT(*) FROM affix_item_class
@@ -27,6 +28,7 @@ console.table(await q(`
   SELECT 'gem name_th' f, COUNT(name_th) have, COUNT(*) total FROM gem
   UNION ALL SELECT 'unique name_th', COUNT(name_th), COUNT(*) FROM unique_item
   UNION ALL SELECT 'base name_th', COUNT(name_th), COUNT(*) FROM base_item
+  UNION ALL SELECT 'currency effect_th', COUNT(effect_th), COUNT(*) FROM currency_item
   UNION ALL SELECT 'mod text_th', COUNT(text_th), COUNT(*) FROM item_mod
   UNION ALL SELECT 'affix stat_th', COUNT(stat_text_th), COUNT(*) FROM affix`));
 

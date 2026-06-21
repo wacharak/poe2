@@ -188,6 +188,29 @@ CREATE TABLE IF NOT EXISTS affix_item_class (
   CONSTRAINT fk_aic_class FOREIGN KEY (item_class_id) REFERENCES item_class(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- ---------- currency items (stackable consumables / orbs) -----------
+-- Listed on /us/Currency; each has its own .newItemPopup detail page like a
+-- base item (Base.* key/val), but the gameplay effect lives in .explicitMod.
+CREATE TABLE IF NOT EXISTS currency_item (
+  id             INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  slug           VARCHAR(191) NOT NULL,     -- poe2db page slug, e.g. "Divine_Orb"
+  name_en        VARCHAR(191) NOT NULL,
+  name_th        VARCHAR(191) NULL,
+  item_class_id  INT UNSIGNED NULL,         -- "Stackable Currency" etc
+  stack_size     SMALLINT UNSIGNED NULL,    -- max stack size
+  effect_en      TEXT NULL,                 -- gameplay effect (joined .explicitMod lines)
+  effect_th      TEXT NULL,
+  properties     JSON NULL,                 -- raw Base.* / property lines
+  image_id       INT UNSIGNED NULL,
+  source_url     VARCHAR(512) NOT NULL,
+  scraped_at     DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_currency_slug (slug),
+  KEY ix_currency_class (item_class_id),
+  CONSTRAINT fk_currency_class FOREIGN KEY (item_class_id) REFERENCES item_class(id) ON DELETE SET NULL,
+  CONSTRAINT fk_currency_image FOREIGN KEY (image_id) REFERENCES image(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- ---------- scrape run tracking -------------------------------------
 CREATE TABLE IF NOT EXISTS scrape_run (
   id          INT UNSIGNED NOT NULL AUTO_INCREMENT,

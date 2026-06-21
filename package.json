@@ -6,10 +6,13 @@
   "private": true,
   "scripts": {
     "schema": "node src/db/apply-schema.js",
+    "views": "node src/db/apply-views.js",
     "recon": "node scripts/recon.js",
     "scrape:bases": "node src/scrape/bases.js",
     "scrape:uniques": "node src/scrape/uniques.js",
     "scrape:gems": "node src/scrape/gems.js",
+    "scrape:currency": "node src/scrape/currency.js",
+    "scrape:consumables": "node src/scrape/consumables.js",
     "scrape:all": "node src/scrape/all.js"
   },
   "dependencies": {

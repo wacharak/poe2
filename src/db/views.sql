@@ -30,6 +30,14 @@ FROM affix a
 JOIN affix_item_class aic ON aic.affix_id = a.id
 LEFT JOIN item_class ic ON ic.id = aic.item_class_id;
 
+CREATE OR REPLACE VIEW v_currency AS
+SELECT c.id, c.slug, c.name_en, c.name_th, ic.name_en AS item_class,
+       c.stack_size, c.effect_en, c.effect_th,
+       img.cdn_url AS image_url, img.local_path AS image_path
+FROM currency_item c
+LEFT JOIN item_class ic ON ic.id = c.item_class_id
+LEFT JOIN image img ON img.id = c.image_id;
+
 CREATE OR REPLACE VIEW v_base AS
 SELECT b.id, b.slug, b.name_en, b.name_th, ic.name_en AS item_class,
        b.drop_level, b.req_str, b.req_dex, b.req_int,
