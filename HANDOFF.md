@@ -1,6 +1,6 @@
 # HANDOFF — PoE2DB Scraper (บันทึกงานค้างสำหรับ session หน้า)
 
-> อัปเดตล่าสุด: 2026-06-20 (รอบ 5 — เฟส 3.3 Currency เสร็จ; scraper เหลือ 3.2 + Waystones/EndGame)
+> อัปเดตล่าสุด: 2026-06-22 (รอบ 6 — Omen/Essence/Catalyst เสร็จ + ไกด์คราฟสร้อย; scraper เหลือ 3.2 Passive/Atlas + Waystones/EndGame)
 > โปรเจกต์: `C:\wamp64\www\Filler POE2` — Node.js scraper ดึง PoE2 จาก poe2db.tw → MySQL `poe2db` + โหลดรูป
 > อ่าน `README.md` ประกอบสำหรับภาพรวม/วิธีรัน
 
@@ -15,7 +15,7 @@
 | `gem` | 1,046 | skill 350 + support 643 + **spirit 53** (แก้ 2.2 แล้ว) |
 | `unique_item` | 447 | **link base ครบ 447/447 (100%)** — ลบ gem ปลอม 69 ตัวออก (ดู 2.3) |
 | `base_item` | 370 | อาวุธ/เกราะ/เครื่องประดับ/ขวด/jewel/tablet/belt |
-| `currency_item` | 37 | **ใหม่ (3.3)** — orb/shard จาก `/us/Currency` (effect en+th 100%, stack_size, icon 36/37) |
+| `currency_item` | 209 | orb/shard 37 (`/us/Currency`) + **Omen 50 + Essence 96 + Catalyst 26 (รอบ 6, `consumables.js`)**. Essence/Catalyst ถูก poe2db ตีเป็น item_class "Stackable Currency" → filter ด้วย slug. icon ครบ ยกเว้น 1 ใบ (SpeedEssencePerfect 403) |
 | `item_mod` | 6,674 | mod ที่ติดมากับ item (implicit/explicit/quality, en + th) |
 | `affix` | 1,872 | **ใหม่ (3.1)** — affix pool (prefix/suffix/corrupted) ราย mod_key + en/th |
 | `affix_item_class` | 8,544 | **ใหม่** — affix ↔ item_class (m:n) + source + weight |
@@ -74,7 +74,13 @@ Views พร้อมใช้: `v_gem`, `v_unique`, `v_base`, `v_affix`, **`v_c
 - ถ้าไม่มี inline จริง ๆ ค่อย render ด้วย Playwright (ต้องติดตั้ง "Playwright MCP Bridge" extension ก่อน — รอบนี้ MCP ใช้ไม่ได้เพราะยังไม่ติดตั้ง)
 - reference: โปรเจกต์ poe2-theorycraft มี `scraper/tree.py` ที่ extract tree จาก SPA
 
-### 3.3 Currency — ✅ เสร็จแล้ว / Waystones + EndGame — ยังไม่ทำ
+### 3.3 Currency + Omen/Essence/Catalyst — ✅ เสร็จแล้ว / Waystones + EndGame — ยังไม่ทำ
+**Omen/Essence/Catalyst (เสร็จ รอบ 6):**
+- **scraper: `src/scrape/consumables.js`** (รัน `npm run scrape:consumables [omen|essence|catalyst|all] [N]`) — generic, เก็บลง `currency_item` เดิม
+- discovery selector ต่างกันต่อหน้า: Omen=`a.whiteitem.Omen` (`/us/Omen`), Essence=`a.item_currency` (`/us/Essence`), Catalyst=`/us/Catalysts` (มี s). ผล omen 50 / essence 96 / catalyst 26, fail 0
+- **gotcha:** Catalyst URL ที่ถูกคือ `/us/Catalysts` (ไม่ใช่ `/us/Catalyst` = 404); Essence/Catalyst ได้ item_class "Stackable Currency" (ไม่แยกคลาส) → query ต้อง filter ด้วย slug LIKE
+- Omen ที่ map ศัพท์เพี้ยนจากคลิป: Blackblooded(="Black Blood"), Abyssal Echoes(="Echo"), Sinistral/Dextral Necromancy(desecrate pre/suf), Light(annul abyss), Sanctification(divine), Corruption
+
 **Currency (เสร็จ):**
 - **scraper: `src/scrape/currency.js`** (รัน `node src/scrape/currency.js [N]`)
 - discovery: หน้า `/us/Currency` ลิสต์ currency เป็น `<a class="item_currency" href="<slug>">` (href สัมพัทธ์ ไม่มี `/us/` นำหน้า) → ได้ 37 slug
@@ -140,7 +146,9 @@ Views พร้อมใช้: `v_gem`, `v_unique`, `v_base`, `v_affix`, `v_cur
 - **GitHub:** repo `wacharak/poe2` (public) เชื่อมแล้ว · **DB creds ย้ายไป `.env`** (gitignore) — `config.js` อ่านจาก env, มี `.env.example`
 - **gitignore:** `node_modules/`, `images/`, `scratch/`, `.env` (images regenerate ได้จาก scraper)
 - **skill `poe2-build-guide`** (`.claude/skills/poe2-build-guide/`) — แปลคลิป/ลิงก์บิลด์ PoE2 → หน้า HTML ไทย + ดึงรูปไอคอนจาก DB (`v_gem`/`v_unique`) มี `template.html` ในโฟลเดอร์ skill
-- **หน้าไกด์ที่ทำแล้ว:** `build-guide-twister.html`, `build-guide-hollow-assault.html` (อย่างละ 2 แท็บ: แปลคลิป + ไกด์ Mobalytics)
+- **หน้าไกด์ที่ทำแล้ว:** `build-guide-twister.html`, `build-guide-hollow-assault.html` (อย่างละ 2 แท็บ), **`build-guide-amulet-craft.html` (รอบ 6 — crafting guide แปลคลิป speech-to-text เพี้ยน → ชื่อจริง poe2db + ไอคอน orb/omen/essence/catalyst, 4 แท็บ)**
+- **`merge/` = สกรีนช็อตส่วนตัว → gitignore แล้ว** (รอบ 6)
+- **งานค้าง/ตรวจเพิ่ม (รอบ 6):** ในไกด์คราฟ flag ไว้ 2 จุดที่คลิปไม่ชัด — (a) กลไก +5 ผ่าน Omen of Sanctification (ข้อมูลทางการ = divine reroll 80–120% ไม่ตรงกับ "ดัน tier") (b) ชื่อ "catalyzing infuser" ที่ดัน quality เกินเพดาน — ยังไม่ยืนยันใน poe2db
 - **GitHub Pages live:** https://wacharak.github.io/poe2/ — ไอคอนที่หน้าใช้ต้อง `git add -f` (เพราะ `images/` ถูก gitignore)
 - gotcha: Mobalytics บล็อก WebFetch (Cloudflare) → ใช้ Exa `web_fetch_exa`; รูปอ้างอิง local `images/` เท่านั้น (Artifact/CDN โดน CSP)
 
